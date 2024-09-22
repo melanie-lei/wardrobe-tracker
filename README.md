@@ -3,7 +3,7 @@
 ## Summary
 
 Fit Tracker is a wardrobe and outfit tracker to keep track of your style.
-A user who wishes to keep track of their wardrobe and outfits will be able to see their past outfits as well as summaries on individual items of clothing they own.
+A user who wishes to keep track of their wardrobe and outfits will be able to manually record and see their past outfits. The application also provides summaries on individual items of clothing owned.
 
 An outfit consists of:
 - Hat
