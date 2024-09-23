@@ -21,3 +21,11 @@ Each individual item keeps track of:
 - Times worn since last wash
 
 ## User Stories
+
+- As a user, I want to be able to add a clothing item to my wardrobe (list of clothing items)
+- As a user, I want to be able to select clothing items to create an outfit
+- As a user, I want to be able to save an outfit with the date worn
+- As a user, I want to be able to see a history of past outfits worn
+- As a user, I want to be able to indicate when I wash an item of clothing
+- As a user, I want to be able to view info on an item of clothing, eg. total times worn, times worn since last wash
+- As a user, I want to be able to sort my clothing items based on its properties
