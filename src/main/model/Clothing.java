@@ -6,7 +6,8 @@ import java.awt.Color;
 public class Clothing {
     public enum ClothingType {
         TOP,
-        BOTTOM,
+        JACKET,
+        BOTTOMS,
         SHOES,
         HEADWEAR,
         ACCESSORY
