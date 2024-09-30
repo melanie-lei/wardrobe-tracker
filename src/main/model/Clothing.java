@@ -2,7 +2,7 @@ package model;
 import java.awt.Color;
 
 // A Clothing item that keeps track of its own properties:
-// type, colour, totalTimesWorn, timesWornSinceWash, isFavourite
+// type, colour, totalTimesWorn, timesWornSinceWash, isFavourite, name, description
 public class Clothing {
     public enum ClothingType {
         TOP,
@@ -13,8 +13,9 @@ public class Clothing {
     }
 
     // EFFECTS: creates a Clothing item with:
-    // a specified ClothingType, colour, totalTimesWorn = 0, timesWornSinceWash = 0, isFavourite = false
-    public Clothing(ClothingType t, Color c){
+    // a specified ClothingType, colour, totalTimesWorn = 0, 
+    // timesWornSinceWash = 0, isFavourite = false, name, description
+    public Clothing(ClothingType t, Color c, String n, String d){
     }
 
     // MODIFIES: this
@@ -47,6 +48,14 @@ public class Clothing {
 
     public ClothingType getClothingType(){
         return null; //stub
+    }
+
+    public String getName(){
+        return ""; //stub
+    }
+
+    public String getDescription(){
+        return ""; //stub
     }
 
 }
