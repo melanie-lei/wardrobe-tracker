@@ -24,6 +24,12 @@ public class Wardrobe {
         //stub
     }
 
+    // MODFIES: this
+    // EFFECTS: adds a clothing to list of clothing
+    public void addClothing(Clothing c){
+        //stub
+    }
+
     public List<Outfit> getOutfits(){
         return null; //stub
     }
