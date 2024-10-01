@@ -9,12 +9,14 @@ public class Outfit {
     public Outfit(){
     }
 
+    // REQUIRES: c is an ACCESSORY
     // MODIFIES: this
     // EFFECTS: adds an accessory clothing to current accessories
     public void addAccessory(Clothing c){
         //stub
     }
 
+    // REQUIRES: c is an ACCESSORY
     // MODIFIES: this
     // EFFECTS: removes an accessory clothing from current accessories
     public void removeAccessory(Clothing c){
