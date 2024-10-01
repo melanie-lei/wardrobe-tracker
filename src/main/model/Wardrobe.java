@@ -38,7 +38,27 @@ public class Wardrobe {
         return null; //stub
     }
 
-    public List<Clothing> getClothing(Clothing.ClothingType t){
+    public List<Clothing> getTops(){
+        return null; //stub
+    }
+
+    public List<Clothing> getJackets(){
+        return null; //stub
+    }
+
+    public List<Clothing> getBottoms(){
+        return null; //stub
+    }
+
+    public List<Clothing> getHeadwear(){
+        return null; //stub
+    }
+
+    public List<Clothing> getShoes(){
+        return null; //stub
+    }
+
+    public List<Clothing> getAccessories(){
         return null; //stub
     }
 }
