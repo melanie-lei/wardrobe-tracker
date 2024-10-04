@@ -54,8 +54,15 @@ public class WardrobeTest {
         wardrobe.sortClothing(wardrobe.getClothing(), "alphabetical");
         assertEquals("blue shirt", wardrobe.getClothing().get(0).getName());
         
-        clothing2.wear();
-        wardrobe.sortClothing(wardrobe.getClothing(), "totalTimesWorn");
+        clothing1.wear();
+        wardrobe.sortClothing(wardrobe.getClothing(), "totalTimesWornAscending");
+        assertEquals("green shirt", wardrobe.getClothing().get(0).getName());
+
+        wardrobe.sortClothing(wardrobe.getClothing(), "totalTimesWornDescending");
+        assertEquals("blue shirt", wardrobe.getClothing().get(0).getName());
+
+        clothing2.setFavourite(true);
+        wardrobe.sortClothing(wardrobe.getClothing(), "isFavourite");
         assertEquals("green shirt", wardrobe.getClothing().get(0).getName());
     }
 
