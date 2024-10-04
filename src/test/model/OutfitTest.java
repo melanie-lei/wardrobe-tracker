@@ -3,8 +3,10 @@ package model;
 import static org.junit.Assert.assertEquals;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import model.Clothing.ClothingType;
@@ -24,12 +26,13 @@ public class OutfitTest {
 
     @Test
     void testConstructor(){
+        List<Clothing> empty = new ArrayList<Clothing>();
         assertEquals(null, outfit.getTop());
         assertEquals(null, outfit.getJacket());
         assertEquals(null, outfit.getBottoms());
         assertEquals(null, outfit.getShoes());
         assertEquals(null, outfit.getHeadwear());
-        assertEquals(null, outfit.getAccessories());
+        assertEquals(empty, outfit.getAccessories());
     }
 
     @Test

@@ -2,7 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import model.Clothing.ClothingType;
@@ -40,6 +40,8 @@ public class WardrobeTest {
         wardrobe.addClothing(clothing1);
         assertEquals(clothing1, wardrobe.getClothing().get(0));
         assertEquals(1, wardrobe.getClothing().size());
+        assertEquals(clothing1, wardrobe.getTops().get(0));
+        assertEquals(1, wardrobe.getTops().size());
         
     }
 
