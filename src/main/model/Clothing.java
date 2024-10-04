@@ -47,8 +47,8 @@ public class Clothing {
         this.timesWornSinceWash = 0;
     }
 
-    public void setFavourite(){
-        this.isFavourite = true;
+    public void setFavourite(boolean bool){
+        this.isFavourite = bool;
     }
 
     public boolean isFavourite(){
