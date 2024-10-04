@@ -13,50 +13,66 @@ public class Clothing {
         ACCESSORY
     }
 
+    private ClothingType type;
+    private Color colour;
+    private int totalTimesWorn;
+    private int timesWornSinceWash;
+    private boolean isFavourite;
+    private String name;
+    private String description;
+
     // EFFECTS: creates a Clothing item with:
     // a specified ClothingType, colour, totalTimesWorn = 0, 
     // timesWornSinceWash = 0, isFavourite = false, name, description
     public Clothing(ClothingType t, Color c, String n, String d){
+        this.type = t;
+        this.colour = c;
+        this.name = n;
+        this.description = d;
+        this.totalTimesWorn = 0;
+        this.timesWornSinceWash = 0;
+        this.isFavourite = false;
     }
 
     // MODIFIES: this
-    // EFFECTS: increments totalTimesWorn and timeWornSinceWash
+    // EFFECTS: increments totalTimesWorn and timesWornSinceWash
     public void wear(){
-        //stub
+        this.totalTimesWorn++;
+        this.timesWornSinceWash++;
     }
 
     // MODIFIES: this
     // EFFECTS: indicates this clothing item as washed and resets times worn since last wash
     public void wash(){
-        //stub
+        this.timesWornSinceWash = 0;
     }
 
     public void setFavourite(){
-        //stub
+        this.isFavourite = true;
     }
 
     public boolean isFavourite(){
-        return false; //stub
+        return this.isFavourite;
     }
 
     public int getTimesWornSinceWash(){
-        return 0; //stub
+        return this.timesWornSinceWash;
     }
 
     public int getTotalTimesWorn(){
-        return 0; //stub
+        return this.totalTimesWorn;
     }
 
     public ClothingType getClothingType(){
-        return null; //stub
+        return this.type;
     }
 
     public String getName(){
-        return ""; //stub
+        return this.name;
     }
 
     public String getDescription(){
-        return ""; //stub
+        return this.description;
     }
 
 }
