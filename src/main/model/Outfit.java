@@ -1,87 +1,102 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // An outfit which is made up of Clothing items
 public class Outfit {
+
+    private Clothing top;
+    private Clothing jacket;
+    private Clothing bottoms;
+    private Clothing shoes;
+    private Clothing headwear;
+    private List<Clothing> accessories;
+    private String name;
+    private String description;
     
     // Effects: creates and Outfit with no Clothing items
     public Outfit(){
+        accessories = new ArrayList<Clothing>();
     }
 
-    // REQUIRES: c is an ACCESSORY
+    // REQUIRES: c has a type ACCESSORY
     // MODIFIES: this
     // EFFECTS: adds an accessory clothing to current accessories
     public void addAccessory(Clothing c){
-        //stub
+        accessories.add(c);
     }
 
-    // REQUIRES: c is an ACCESSORY
+    // REQUIRES: c has a type ACCESSORY
     // MODIFIES: this
     // EFFECTS: removes an accessory clothing from current accessories
     public void removeAccessory(Clothing c){
-        //stub
+        accessories.remove(c);
     }
 
-
+    // REQUIRES: c has a type TOP
     public void setTop(Clothing c){
-        //stub
+        this.top = c;
     }
 
+    // REQUIRES: c has a type JACKET
     public void setJacket(Clothing c){
-        //stub
+        this.jacket = c;
     }
 
+    // REQUIRES: c has a type BOTTOMS
     public void setBottoms(Clothing c){
-        //stub
+        this.bottoms = c;
     }
 
+    // REQUIRES: c has a type SHOES
     public void setShoes(Clothing c){
-        //stub
+        this.shoes = c;
     }
 
+    // REQUIRES: c has a type HEADWEAR
     public void setHeadwear(Clothing c){
-        //stub
+        this.headwear = c;
     }
 
     public Clothing getTop(){
-        return null;//stub
+        return this.top;//stub
     }
 
     public Clothing getJacket(){
-        return null;//stub
+        return this.jacket;//stub
     }
 
     public Clothing getBottoms(){
-        return null;//stub
+        return this.bottoms;//stub
     }
 
     public Clothing getShoes(){
-        return null;//stub
+        return this.shoes;//stub
     }
 
     public Clothing getHeadwear(){
-        return null;//stub
+        return this.headwear;//stub
     }
 
     public List<Clothing> getAccessories(){
-        return null;//stub
+        return this.accessories;//stub
     }
 
     public void setName(String n){
-        //stub
+        this.name = n;
     }
 
     public void setDescription(String d){
-        //stub
+        this.description = d;
     }
 
     public String getName(){
-        return "";//stub
+        return this.name;
     }
 
     public String getDescription(){
-        return "";//stub
+        return this.description;
     }
 
 }
