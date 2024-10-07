@@ -63,6 +63,10 @@ public class Clothing {
         return this.totalTimesWorn;
     }
 
+    public Color getColour(){
+        return this.colour;
+    }
+
     public ClothingType getClothingType(){
         return this.type;
     }
