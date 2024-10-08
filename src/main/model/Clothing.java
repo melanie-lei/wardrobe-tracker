@@ -36,9 +36,10 @@ public class Clothing {
 
     // MODIFIES: this
     // EFFECTS: increments totalTimesWorn and timesWornSinceWash
-    public void wear(){
+    public Clothing wear(){
         this.totalTimesWorn++;
         this.timesWornSinceWash++;
+        return this;
     }
 
     // MODIFIES: this

@@ -46,6 +46,7 @@ public class Wardrobe {
                 break;
             case "timesWornSinceWash":
                 list.sort((o1, o2)-> o1.getTimesWornSinceWash()-o2.getTimesWornSinceWash());
+                Collections.reverse(list);
                 break;
             case "isFavourite":
                 list.sort((o1, o2)-> favouriteSort(o1.isFavourite(), o2.isFavourite()));

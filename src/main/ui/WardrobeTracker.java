@@ -1,9 +1,11 @@
 package ui;
 
+import java.awt.Color;
 import java.util.List;
 import java.util.Scanner;
 
 import model.Clothing;
+import model.Clothing.ClothingType;
 import model.Outfit;
 import model.Wardrobe;
 
@@ -72,28 +74,154 @@ public class WardrobeTracker {
 
     // EFFECTS: adds a clothing item to the wardrobe
     private void addClothingItem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addClothingItem'");
+        String name;
+        String description;
+        Color colour;
+        ClothingType type;
+        String input;
+        System.out.println("Name the piece: ");
+        name = scanner.nextLine();
+        System.out.println("Write a description: ");
+        description = scanner.nextLine();
+        System.out.println("Choose a colour. [1] Red | [2] Blue | [3] Green");
+        input = scanner.nextLine();
+        colour = chooseColour(input);
+        System.out.println("Choose type. [1] Top | [2] Jacket | [3] Bottoms " + 
+                            "| [4] Shoes | [5] Headwear | [6] Accessory");
+        input = scanner.nextLine();
+        type = chooseType(input);
+
+        wardrobe.addClothing(new Clothing(type, colour, name, description));
+    }
+
+    // EFFECTS: processes user choice for type of clothing
+    private ClothingType chooseType(String input) {
+        switch (input) {
+            case "1":
+                return ClothingType.TOP;
+            case "2":
+                return ClothingType.JACKET;
+            case "3":
+                return ClothingType.BOTTOMS;
+            case "4":
+                return ClothingType.SHOES;
+            case "5":
+                return ClothingType.HEADWEAR;
+            case "6":
+                return ClothingType.ACCESSORY;
+            default:
+                System.out.println("Invalid input. Please try again.");
+                input = scanner.nextLine();
+                return chooseType(input);
+        }
+    }
+
+    // EFFECTS: processes user choice for colour of clothing
+    private Color chooseColour(String input) {
+        switch (input) {
+            case "1":
+                return Color.red;
+            case "2":
+                return Color.blue;
+            case "3":
+                return Color.green;
+            default:
+                System.out.println("Invalid input. Please try again.");
+                input = scanner.nextLine();
+                return chooseColour(input);
+        }
     }
 
     // EFFECTS: adds an outfit to the wardrobe
     private void addOutfit() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addOutfit'");
+        Outfit outfit = new Outfit();
+        System.out.println("Name the outfit: ");
+        outfit.setName(scanner.nextLine());
+        System.out.println("Write a description: ");
+        outfit.setDescription(scanner.nextLine());
+        System.out.println("Choose top: ");
+        outfit.setTop(chooseClothing(wardrobe.getTops()));
+        System.out.println("Choose jacket: ");
+        outfit.setJacket(chooseClothing(wardrobe.getJackets()));
+        System.out.println("Choose bottoms: ");
+        outfit.setBottoms(chooseClothing(wardrobe.getBottoms()));
+        System.out.println("Choose shoes: ");
+        outfit.setShoes(chooseClothing(wardrobe.getShoes()));
+        System.out.println("Choose headwear: ");
+        outfit.setHeadwear(chooseClothing(wardrobe.getHeadwear()));
+        System.out.println("Choose accessory: ");
+        outfit.addAccessory(chooseClothing(wardrobe.getAccessories()));
+        wardrobe.addOutfit(outfit);
+    }
+
+    private Clothing chooseClothing(List<Clothing> listOfClothing) {
+        for(int i = 0; i < listOfClothing.size(); i++){
+            System.out.println("[" + String.valueOf(i+1) + "] " + listOfClothing.get(i).getName());
+        }
+        String input = scanner.nextLine();
+        try {
+            return listOfClothing.get(Integer.valueOf(input) - 1).wear();
+        } catch (Exception e) {
+            System.out.println("Invalid input. Try again.");
+            return chooseClothing(listOfClothing);
+        }
     }
 
     // EFFECTS: displays all clothing and presents options for user to view specific item
     private void viewClothing() {
         for(int i = 0; i < clothing.size(); i++){
-            System.out.println(clothing.get(i).getName());
+            System.out.println("[" + String.valueOf(i+1) + "] " + clothing.get(i).getName());
         }
-        System.out.println("Choose a clothing item to view or [E]xit");
+        System.out.println("Choose a clothing item to view, [S]ort, or [E]xit");
         String input = scanner.nextLine().toUpperCase();
 
         if(input.equals("E")){
             return;
         }
-        handleViewInput("clothing", input);
+        if(input.equals("S")){
+            sortMenu();
+        } else {
+            handleViewInput("clothing", input);
+        }
+    }
+
+    private void sortMenu() {
+        System.out.println("Sort by [1] Alphabetical | [2] Total times worn ascending | [3] Total times worn descending"
+                            + " | [4] Times worn since wash | [5] Is favourite");
+        String input = scanner.nextLine().toUpperCase();
+
+        boolean isInvalid = false;
+        do{
+            isInvalid = false;
+            switch (input) {
+                case "1":
+                    wardrobe.sortClothing(clothing, "alphabetical");
+                    viewClothing();
+                    break;
+                case "2":
+                    wardrobe.sortClothing(clothing, "totalTimesWornAscending");
+                    viewClothing();
+                    break;
+                case "3":
+                    wardrobe.sortClothing(clothing, "totalTimesWornDescending");
+                    viewClothing();
+                    break;
+                case "4":
+                    wardrobe.sortClothing(clothing, "totalTimesWornDescending");
+                    viewClothing();
+                    return;
+                case "5":
+                    wardrobe.sortClothing(clothing, "isFavourite");
+                    viewClothing();
+                    return;
+                default:
+                    isInvalid = true;
+                    System.out.println("Invalid Input. Try again.");
+                    input = scanner.nextLine().toUpperCase();
+                    break;
+            }
+            
+        }while(isInvalid);
     }
 
     // REQUIRES: option must be "clothing" or "outfit"
@@ -104,9 +232,9 @@ public class WardrobeTracker {
                 return;
             }
             if(option.equals("clothing")) {
-                displayClothingItem(clothing.get(Integer.valueOf(input)));
+                displayClothingItem(clothing.get(Integer.valueOf(input) - 1));
             } else {
-                displayOutfit(outfits.get(Integer.valueOf(input)));
+                displayOutfit(outfits.get(Integer.valueOf(input) - 1));
             }
             if(Integer.valueOf(input) == 0){
             }
@@ -121,30 +249,43 @@ public class WardrobeTracker {
     private void displayClothingItem(Clothing clothingItem) {
         System.out.println("Name: " + clothingItem.getName());
         System.out.println("Description: " + clothingItem.getDescription());
-        System.out.println("Colour: " + String.valueOf(clothingItem.getColour().getRGB()));
+        System.out.println("Colour: " + String.valueOf(clothingItem.getColour()));
         System.out.println("Times worn total: " + String.valueOf(clothingItem.getTotalTimesWorn()));
         System.out.println("Times worn since last wash: " + String.valueOf(clothingItem.getTimesWornSinceWash()));
+        System.out.println("Is favourite: " + clothingItem.isFavourite());
 
-        System.out.println("[W]ash, [E]xit");
+        System.out.println("[F]avourite, [R]emove Favourite, [W]ash, [E]xit");
         String input = scanner.nextLine().toUpperCase();
 
-        boolean invalidInput = true;
-        while(invalidInput){
+        boolean isInvalid = false;
+        do{
+            isInvalid = false;
             switch (input) {
+                case "F":
+                    clothingItem.setFavourite(true);
+                    System.out.println("Set as a favourite.");
+                    displayClothingItem(clothingItem);
+                    break;
+                case "R":
+                    clothingItem.setFavourite(false);
+                    System.out.println("Removed as a favourite.");
+                    displayClothingItem(clothingItem);
+                    break;
                 case "W":
-                    invalidInput = false;
                     clothingItem.wash();
+                    System.out.println("Item washed.");
                     displayClothingItem(clothingItem);
                     break;
                 case "E":
-                    invalidInput = false;
                     return;
                 default:
+                    isInvalid = true;
                     System.out.println("Invalid Input. Try again.");
                     input = scanner.nextLine().toUpperCase();
                     break;
             }
-        }
+            
+        } while(isInvalid);
 
     }
 
