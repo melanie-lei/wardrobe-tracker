@@ -74,22 +74,17 @@ public class WardrobeTracker {
 
     // EFFECTS: adds a clothing item to the wardrobe
     private void addClothingItem() {
-        String name;
-        String description;
-        Color colour;
-        ClothingType type;
-        String input;
         System.out.println("Name the piece: ");
-        name = scanner.nextLine();
+        String name = scanner.nextLine();
         System.out.println("Write a description: ");
-        description = scanner.nextLine();
+        String description = scanner.nextLine();
         System.out.println("Choose a colour. [1] Red | [2] Blue | [3] Green");
-        input = scanner.nextLine();
-        colour = chooseColour(input);
+        String input = scanner.nextLine();
+        Color colour = chooseColour(input);
         System.out.println("Choose type. [1] Top | [2] Jacket | [3] Bottoms " + 
                             "| [4] Shoes | [5] Headwear | [6] Accessory");
         input = scanner.nextLine();
-        type = chooseType(input);
+        ClothingType type = chooseType(input);
 
         wardrobe.addClothing(new Clothing(type, colour, name, description));
     }
@@ -185,6 +180,7 @@ public class WardrobeTracker {
         }
     }
 
+    // Show menu for sorting wardrobe and process requests
     private void sortMenu() {
         System.out.println("Sort by [1] Alphabetical | [2] Total times worn ascending | [3] Total times worn descending"
                             + " | [4] Times worn since wash | [5] Is favourite");
