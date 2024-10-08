@@ -15,9 +15,9 @@ public class Wardrobe {
     private List<Clothing> headwear;
     private List<Clothing> accessories;
     private List<Outfit> outfits;
-    
+
     // EFFECTS: Creates a Wardrobe with no outfits or clothing items
-    public Wardrobe(){
+    public Wardrobe() {
         this.clothing = new ArrayList<Clothing>();
         this.tops = new ArrayList<Clothing>();
         this.jackets = new ArrayList<Clothing>();
@@ -29,37 +29,38 @@ public class Wardrobe {
     }
 
     // REQUIRES: category can only be:
-    // "totalTimesWornAscending", "totalTimesWornDescending", "timesWornSinceWash", "isFavourite", "alphabetical"
+    // "totalTimesWornAscending", "totalTimesWornDescending", "timesWornSinceWash",
+    // "isFavourite", "alphabetical"
     // MODIFIES: list
     // EFFECTS: sorts the given list based on the given category
-    public void sortClothing(List<Clothing> list, String category){
+    public void sortClothing(List<Clothing> list, String category) {
         switch (category) {
             case "alphabetical":
-                list.sort((o1, o2)-> o1.getName().compareTo(o2.getName()));
+                list.sort((o1, o2) -> o1.getName().compareTo(o2.getName()));
                 break;
             case "totalTimesWornAscending":
-                list.sort((o1, o2)-> o1.getTotalTimesWorn()-o2.getTotalTimesWorn());
+                list.sort((o1, o2) -> o1.getTotalTimesWorn() - o2.getTotalTimesWorn());
                 break;
             case "totalTimesWornDescending":
-                list.sort((o1, o2)-> o1.getTotalTimesWorn()-o2.getTotalTimesWorn());
+                list.sort((o1, o2) -> o1.getTotalTimesWorn() - o2.getTotalTimesWorn());
                 Collections.reverse(list);
                 break;
             case "timesWornSinceWash":
-                list.sort((o1, o2)-> o1.getTimesWornSinceWash()-o2.getTimesWornSinceWash());
+                list.sort((o1, o2) -> o1.getTimesWornSinceWash() - o2.getTimesWornSinceWash());
                 Collections.reverse(list);
                 break;
             case "isFavourite":
-                list.sort((o1, o2)-> favouriteSort(o1.isFavourite(), o2.isFavourite()));
+                list.sort((o1, o2) -> favouriteSort(o1.isFavourite(), o2.isFavourite()));
                 break;
             default:
                 break;
         }
     }
 
-    private int favouriteSort(boolean a, boolean b){
+    private int favouriteSort(boolean a, boolean b) {
         if (a && !b) {
             return -1;
-        } else if (b && !a){
+        } else if (b && !a) {
             return 1;
         } else {
             return 0;
@@ -68,13 +69,13 @@ public class Wardrobe {
 
     // MODFIES: this
     // EFFECTS: adds an outfit to list of outfits
-    public void addOutfit(Outfit o){
+    public void addOutfit(Outfit o) {
         this.outfits.add(o);
     }
 
     // MODFIES: this
     // EFFECTS: adds a clothing to list of clothing
-    public void addClothing(Clothing c){
+    public void addClothing(Clothing c) {
         this.clothing.add(c);
         switch (c.getClothingType()) {
             case TOP:
@@ -100,35 +101,35 @@ public class Wardrobe {
         }
     }
 
-    public List<Outfit> getOutfits(){
+    public List<Outfit> getOutfits() {
         return this.outfits;
     }
 
-    public List<Clothing> getClothing(){
+    public List<Clothing> getClothing() {
         return this.clothing;
     }
 
-    public List<Clothing> getTops(){
+    public List<Clothing> getTops() {
         return this.tops;
     }
 
-    public List<Clothing> getJackets(){
+    public List<Clothing> getJackets() {
         return this.jackets;
     }
 
-    public List<Clothing> getBottoms(){
+    public List<Clothing> getBottoms() {
         return this.bottoms;
     }
 
-    public List<Clothing> getHeadwear(){
+    public List<Clothing> getHeadwear() {
         return this.headwear;
     }
 
-    public List<Clothing> getShoes(){
+    public List<Clothing> getShoes() {
         return this.shoes;
     }
 
-    public List<Clothing> getAccessories(){
+    public List<Clothing> getAccessories() {
         return this.accessories;
     }
 }

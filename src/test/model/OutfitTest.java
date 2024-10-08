@@ -16,16 +16,16 @@ public class OutfitTest {
     Outfit outfit;
     Clothing necklace;
     Clothing bracelet;
-    
+
     @BeforeEach
-    void runBefore(){
+    void runBefore() {
         outfit = new Outfit();
         necklace = new Clothing(ClothingType.ACCESSORY, Color.red, "Necklace", "bought it at __");
         bracelet = new Clothing(ClothingType.ACCESSORY, Color.blue, "Bracelet", "bought it at __");
     }
 
     @Test
-    void testConstructor(){
+    void testConstructor() {
         List<Clothing> empty = new ArrayList<Clothing>();
         assertEquals(null, outfit.getTop());
         assertEquals(null, outfit.getJacket());
@@ -38,14 +38,14 @@ public class OutfitTest {
     }
 
     @Test
-    void testAddAccessory(){
+    void testAddAccessory() {
         outfit.addAccessory(necklace);
         assertEquals(necklace, outfit.getAccessories().get(0));
         assertEquals(1, outfit.getAccessories().size());
     }
 
     @Test
-    void testRemoveAccessory(){
+    void testRemoveAccessory() {
         outfit.addAccessory(necklace);
         outfit.addAccessory(bracelet);
         outfit.removeAccessory(necklace);
@@ -54,7 +54,7 @@ public class OutfitTest {
     }
 
     @Test
-    void testSetters(){
+    void testSetters() {
         Clothing top = new Clothing(ClothingType.TOP, Color.blue, "Name", "Description");
         Clothing jacket = new Clothing(ClothingType.JACKET, Color.blue, "Name", "Description");
         Clothing bottoms = new Clothing(ClothingType.BOTTOMS, Color.blue, "Name", "Description");

@@ -15,18 +15,18 @@ public class WardrobeTest {
     Clothing clothing2;
 
     @BeforeEach
-    void runBefore(){
+    void runBefore() {
         wardrobe = new Wardrobe();
     }
 
     @Test
-    void testConstructor(){
+    void testConstructor() {
         assertEquals(0, wardrobe.getClothing().size());
         assertEquals(0, wardrobe.getOutfits().size());
     }
 
     @Test
-    void testAddOutfit(){
+    void testAddOutfit() {
         outfit = new Outfit();
         outfit.setName("my outfit");
         wardrobe.addOutfit(outfit);
@@ -35,7 +35,7 @@ public class WardrobeTest {
     }
 
     @Test
-    void testAddClothing(){
+    void testAddClothing() {
         clothing1 = new Clothing(ClothingType.TOP, Color.blue, "blue shirt", "bought at h&m");
         wardrobe.addClothing(clothing1);
         assertEquals(clothing1, wardrobe.getClothing().get(0));
@@ -77,18 +77,18 @@ public class WardrobeTest {
         assertEquals(6, wardrobe.getClothing().size());
         assertEquals(clothing1, wardrobe.getAccessories().get(0));
         assertEquals(1, wardrobe.getAccessories().size());
-        
+
     }
 
     @Test
-    void testSortClothing(){
+    void testSortClothing() {
         clothing1 = new Clothing(ClothingType.TOP, Color.blue, "blue shirt", "bought at h&m");
         clothing2 = new Clothing(ClothingType.TOP, Color.green, "green shirt", "bought at zara");
         wardrobe.addClothing(clothing2);
         wardrobe.addClothing(clothing1);
         wardrobe.sortClothing(wardrobe.getClothing(), "alphabetical");
         assertEquals("blue shirt", wardrobe.getClothing().get(0).getName());
-        
+
         clothing1.wear();
         wardrobe.sortClothing(wardrobe.getClothing(), "totalTimesWornAscending");
         assertEquals("green shirt", wardrobe.getClothing().get(0).getName());

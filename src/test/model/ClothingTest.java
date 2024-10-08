@@ -13,7 +13,7 @@ import model.Clothing.ClothingType;
 public class ClothingTest {
 
     private Clothing clothing;
-    
+
     @BeforeEach
     void runBefore() {
         clothing = new Clothing(ClothingType.TOP, Color.blue, "my t-shirt", "got it at h&m");
@@ -34,7 +34,7 @@ public class ClothingTest {
         clothing.wear();
         assertEquals(1, clothing.getTotalTimesWorn());
         assertEquals(1, clothing.getTimesWornSinceWash());
-        
+
         clothing.wear();
         assertEquals(2, clothing.getTotalTimesWorn());
         assertEquals(2, clothing.getTimesWornSinceWash());

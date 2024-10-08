@@ -1,4 +1,5 @@
 package model;
+
 import java.awt.Color;
 
 // A Clothing item that keeps track of its own properties:
@@ -22,9 +23,9 @@ public class Clothing {
     private String description;
 
     // EFFECTS: creates a Clothing item with:
-    // a specified ClothingType, colour, totalTimesWorn = 0, 
+    // a specified ClothingType, colour, totalTimesWorn = 0,
     // timesWornSinceWash = 0, isFavourite = false, name, description
-    public Clothing(ClothingType t, Color c, String n, String d){
+    public Clothing(ClothingType t, Color c, String n, String d) {
         this.type = t;
         this.colour = c;
         this.name = n;
@@ -36,47 +37,48 @@ public class Clothing {
 
     // MODIFIES: this
     // EFFECTS: increments totalTimesWorn and timesWornSinceWash
-    public Clothing wear(){
+    public Clothing wear() {
         this.totalTimesWorn++;
         this.timesWornSinceWash++;
         return this;
     }
 
     // MODIFIES: this
-    // EFFECTS: indicates this clothing item as washed and resets times worn since last wash
-    public void wash(){
+    // EFFECTS: indicates this clothing item as washed and resets times worn since
+    // last wash
+    public void wash() {
         this.timesWornSinceWash = 0;
     }
 
-    public void setFavourite(boolean bool){
+    public void setFavourite(boolean bool) {
         this.isFavourite = bool;
     }
 
-    public boolean isFavourite(){
+    public boolean isFavourite() {
         return this.isFavourite;
     }
 
-    public int getTimesWornSinceWash(){
+    public int getTimesWornSinceWash() {
         return this.timesWornSinceWash;
     }
 
-    public int getTotalTimesWorn(){
+    public int getTotalTimesWorn() {
         return this.totalTimesWorn;
     }
 
-    public Color getColour(){
+    public Color getColour() {
         return this.colour;
     }
 
-    public ClothingType getClothingType(){
+    public ClothingType getClothingType() {
         return this.type;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return this.description;
     }
 
