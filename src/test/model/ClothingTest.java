@@ -24,6 +24,9 @@ public class ClothingTest {
         assertFalse(clothing.isFavourite());
         assertEquals(0, clothing.getTimesWornSinceWash());
         assertEquals(0, clothing.getTotalTimesWorn());
+        assertEquals(Color.blue, clothing.getColour());
+        assertEquals("my t-shirt", clothing.getName());
+        assertEquals("got it at h&m", clothing.getDescription());
     }
 
     @Test

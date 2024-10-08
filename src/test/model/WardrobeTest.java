@@ -42,6 +42,41 @@ public class WardrobeTest {
         assertEquals(1, wardrobe.getClothing().size());
         assertEquals(clothing1, wardrobe.getTops().get(0));
         assertEquals(1, wardrobe.getTops().size());
+
+        clothing1 = new Clothing(ClothingType.JACKET, Color.red, "Red jacket", "note");
+        wardrobe.addClothing(clothing1);
+        assertEquals(clothing1, wardrobe.getClothing().get(1));
+        assertEquals(2, wardrobe.getClothing().size());
+        assertEquals(clothing1, wardrobe.getJackets().get(0));
+        assertEquals(1, wardrobe.getJackets().size());
+
+        clothing1 = new Clothing(ClothingType.BOTTOMS, Color.red, "Red jacket", "note");
+        wardrobe.addClothing(clothing1);
+        assertEquals(clothing1, wardrobe.getClothing().get(2));
+        assertEquals(3, wardrobe.getClothing().size());
+        assertEquals(clothing1, wardrobe.getBottoms().get(0));
+        assertEquals(1, wardrobe.getBottoms().size());
+
+        clothing1 = new Clothing(ClothingType.SHOES, Color.red, "Red jacket", "note");
+        wardrobe.addClothing(clothing1);
+        assertEquals(clothing1, wardrobe.getClothing().get(3));
+        assertEquals(4, wardrobe.getClothing().size());
+        assertEquals(clothing1, wardrobe.getShoes().get(0));
+        assertEquals(1, wardrobe.getShoes().size());
+
+        clothing1 = new Clothing(ClothingType.HEADWEAR, Color.red, "Red jacket", "note");
+        wardrobe.addClothing(clothing1);
+        assertEquals(clothing1, wardrobe.getClothing().get(4));
+        assertEquals(5, wardrobe.getClothing().size());
+        assertEquals(clothing1, wardrobe.getHeadwear().get(0));
+        assertEquals(1, wardrobe.getHeadwear().size());
+
+        clothing1 = new Clothing(ClothingType.ACCESSORY, Color.red, "Red jacket", "note");
+        wardrobe.addClothing(clothing1);
+        assertEquals(clothing1, wardrobe.getClothing().get(5));
+        assertEquals(6, wardrobe.getClothing().size());
+        assertEquals(clothing1, wardrobe.getAccessories().get(0));
+        assertEquals(1, wardrobe.getAccessories().size());
         
     }
 
@@ -64,6 +99,17 @@ public class WardrobeTest {
         clothing2.setFavourite(true);
         wardrobe.sortClothing(wardrobe.getClothing(), "isFavourite");
         assertEquals("green shirt", wardrobe.getClothing().get(0).getName());
+
+        wardrobe.sortClothing(wardrobe.getClothing(), "isFavourite");
+        assertEquals("green shirt", wardrobe.getClothing().get(0).getName());
+
+        clothing2.setFavourite(false);
+        wardrobe.sortClothing(wardrobe.getClothing(), "isFavourite");
+        assertEquals("green shirt", wardrobe.getClothing().get(0).getName());
+
+        clothing1.wear();
+        wardrobe.sortClothing(wardrobe.getClothing(), "timesWornSinceWash");
+        assertEquals("blue shirt", wardrobe.getClothing().get(0).getName());
     }
 
 }

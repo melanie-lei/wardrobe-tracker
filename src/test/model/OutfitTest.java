@@ -33,6 +33,8 @@ public class OutfitTest {
         assertEquals(null, outfit.getShoes());
         assertEquals(null, outfit.getHeadwear());
         assertEquals(empty, outfit.getAccessories());
+        assertEquals(null, outfit.getName());
+        assertEquals(null, outfit.getDescription());
     }
 
     @Test
@@ -49,5 +51,24 @@ public class OutfitTest {
         outfit.removeAccessory(necklace);
         assertEquals(bracelet, outfit.getAccessories().get(0));
         assertEquals(1, outfit.getAccessories().size());
+    }
+
+    @Test
+    void testSetters(){
+        Clothing top = new Clothing(ClothingType.TOP, Color.blue, "Name", "Description");
+        Clothing jacket = new Clothing(ClothingType.JACKET, Color.blue, "Name", "Description");
+        Clothing bottoms = new Clothing(ClothingType.BOTTOMS, Color.blue, "Name", "Description");
+        Clothing shoes = new Clothing(ClothingType.SHOES, Color.blue, "Name", "Description");
+        Clothing headwear = new Clothing(ClothingType.HEADWEAR, Color.blue, "Name", "Description");
+        outfit.setTop(top);
+        outfit.setJacket(jacket);
+        outfit.setBottoms(bottoms);
+        outfit.setShoes(shoes);
+        outfit.setHeadwear(headwear);
+        assertEquals(top, outfit.getTop());
+        assertEquals(jacket, outfit.getJacket());
+        assertEquals(bottoms, outfit.getBottoms());
+        assertEquals(shoes, outfit.getShoes());
+        assertEquals(headwear, outfit.getHeadwear());
     }
 }
