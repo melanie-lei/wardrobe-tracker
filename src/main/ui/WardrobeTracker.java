@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.Color;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -81,8 +82,8 @@ public class WardrobeTracker {
         System.out.println("Choose a colour. [1] Red | [2] Blue | [3] Green");
         String input = scanner.nextLine();
         Color colour = chooseColour(input);
-        System.out.println("Choose type. [1] Top | [2] Jacket | [3] Bottoms " +
-                "| [4] Shoes | [5] Headwear | [6] Accessory");
+        System.out.println("Choose type. [1] Top | [2] Jacket | [3] Bottoms "
+                + "| [4] Shoes | [5] Headwear | [6] Accessory");
         input = scanner.nextLine();
         ClothingType type = chooseType(input);
 
@@ -149,6 +150,7 @@ public class WardrobeTracker {
         wardrobe.addOutfit(outfit);
     }
 
+    // EFFECTS: displays list of clothing and processes user's choice and returns chosen clothing
     private Clothing chooseClothing(List<Clothing> listOfClothing) {
         for (int i = 0; i < listOfClothing.size(); i++) {
             System.out.println("[" + String.valueOf(i + 1) + "] " + listOfClothing.get(i).getName());
@@ -187,38 +189,22 @@ public class WardrobeTracker {
                 + " | [4] Times worn since wash | [5] Is favourite");
         String input = scanner.nextLine().toUpperCase();
 
+        List<String> sortOptions = Arrays.asList("alphabetical", "totalTimesWornAscending", "totalTimesWornDescending",
+                "timesWornSinceWash", "isFavourite");
+
         boolean isInvalid = false;
         do {
             isInvalid = false;
-            switch (input) {
-                case "1":
-                    wardrobe.sortClothing(clothing, "alphabetical");
-                    viewClothing();
-                    break;
-                case "2":
-                    wardrobe.sortClothing(clothing, "totalTimesWornAscending");
-                    viewClothing();
-                    break;
-                case "3":
-                    wardrobe.sortClothing(clothing, "totalTimesWornDescending");
-                    viewClothing();
-                    break;
-                case "4":
-                    wardrobe.sortClothing(clothing, "totalTimesWornDescending");
-                    viewClothing();
-                    return;
-                case "5":
-                    wardrobe.sortClothing(clothing, "isFavourite");
-                    viewClothing();
-                    return;
-                default:
-                    isInvalid = true;
-                    System.out.println("Invalid Input. Try again.");
-                    input = scanner.nextLine().toUpperCase();
-                    break;
+            try {
+                wardrobe.sortClothing(clothing, sortOptions.get(Integer.valueOf(input)));
+            } catch (Exception e) {
+                isInvalid = true;
+                System.out.println("Invalid Input. Try again.");
+                input = scanner.nextLine().toUpperCase();
             }
 
         } while (isInvalid);
+        viewClothing();
     }
 
     // REQUIRES: option must be "clothing" or "outfit"
@@ -232,8 +218,6 @@ public class WardrobeTracker {
                 displayClothingItem(clothing.get(Integer.valueOf(input) - 1));
             } else {
                 displayOutfit(outfits.get(Integer.valueOf(input) - 1));
-            }
-            if (Integer.valueOf(input) == 0) {
             }
         } catch (Exception e) {
             System.out.println("Invalid input. Try again.");
@@ -255,36 +239,33 @@ public class WardrobeTracker {
         System.out.println("[F]avourite, [R]emove Favourite, [W]ash, [E]xit");
         String input = scanner.nextLine().toUpperCase();
 
-        boolean isInvalid = false;
-        do {
-            isInvalid = false;
-            switch (input) {
-                case "F":
-                    clothingItem.setFavourite(true);
-                    System.out.println("Set as a favourite.");
-                    displayClothingItem(clothingItem);
-                    break;
-                case "R":
-                    clothingItem.setFavourite(false);
-                    System.out.println("Removed as a favourite.");
-                    displayClothingItem(clothingItem);
-                    break;
-                case "W":
-                    clothingItem.wash();
-                    System.out.println("Item washed.");
-                    displayClothingItem(clothingItem);
-                    break;
-                case "E":
-                    return;
-                default:
-                    isInvalid = true;
-                    System.out.println("Invalid Input. Try again.");
-                    input = scanner.nextLine().toUpperCase();
-                    break;
-            }
+        handleClothingInput(input, clothingItem);
 
-        } while (isInvalid);
+    }
 
+    private void handleClothingInput(String input, Clothing clothingItem) {
+        switch (input) {
+            case "F":
+                clothingItem.setFavourite(true);
+                System.out.println("Set as a favourite.");
+                break;
+            case "R":
+                clothingItem.setFavourite(false);
+                System.out.println("Removed as a favourite.");
+                break;
+            case "W":
+                clothingItem.wash();
+                System.out.println("Item washed.");
+                break;
+            case "E":
+                return;
+            default:
+                System.out.println("Invalid Input. Try again.");
+                input = scanner.nextLine().toUpperCase();
+                handleClothingInput(input, clothingItem);
+                return;
+        }
+        displayClothingItem(clothingItem);
     }
 
     // EFFECTS: displays all outfits and presents options for user to view specific
