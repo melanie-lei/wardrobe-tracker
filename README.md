@@ -29,3 +29,5 @@ Each individual item keeps track of:
 - As a user, I want to be able to indicate when I wash an item of clothing
 - As a user, I want to be able to view info on an item of clothing, eg. total times worn, times worn since last wash
 - As a user, I want to be able to sort my clothing items based on its properties
+- As a user, I want to be able to save my outfits and clothing items to file (if I so choose)
+- As a user, I want to be able to be able to load my outfits and clothing items from file (if I so choose)
