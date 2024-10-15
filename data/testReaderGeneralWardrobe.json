@@ -1,0 +1,78 @@
+{
+    "clothing": [
+        {
+            "id": 0,
+            "name": "blue shirt",
+            "description": "this is my shirt",
+            "type": "TOP",
+            "colour": "-16776961",
+            "totalTimesWorn": 4,
+            "timesWornSinceWash": 2,
+            "isFavourite": true
+        },
+        {
+            "id": 1,
+            "name": "red pants",
+            "description": "these are my pants",
+            "type": "BOTTOMS",
+            "colour": "-65536",
+            "totalTimesWorn": 6,
+            "timesWornSinceWash": 1,
+            "isFavourite": false
+        },
+        {
+            "id": 2,
+            "name": "red jacket",
+            "description": "my jacket",
+            "type": "JACKET",
+            "colour": "-65536",
+            "totalTimesWorn": 6,
+            "timesWornSinceWash": 2,
+            "isFavourite": false
+        },
+        {
+            "id": 3,
+            "name": "red shoes",
+            "description": "these are my shoes",
+            "type": "SHOES",
+            "colour": "-65536",
+            "totalTimesWorn": 5,
+            "timesWornSinceWash": 1,
+            "isFavourite": false
+        },
+        {
+            "id": 4,
+            "name": "red hat",
+            "description": "this is my hat",
+            "type": "HEADWEAR",
+            "colour": "-65536",
+            "totalTimesWorn": 3,
+            "timesWornSinceWash": 1,
+            "isFavourite": false
+        },
+        {
+            "id": 5,
+            "name": "necklace",
+            "description": "accessory",
+            "type": "ACCESSORY",
+            "colour": "-65536",
+            "totalTimesWorn": 6,
+            "timesWornSinceWash": 4,
+            "isFavourite": false
+        }
+    ],
+    "outfits": [
+        {
+            "name": "my outfit",
+            "description": "this is a description",
+            "top": 0,
+            "jacket": 2,
+            "bottoms": 1,
+            "shoes": 3,
+            "headwear": 4,
+            "accessories": [
+                5
+            ]
+        }
+    ]
+}
