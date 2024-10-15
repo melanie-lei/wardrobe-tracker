@@ -16,7 +16,7 @@ public class ClothingTest {
 
     @BeforeEach
     void runBefore() {
-        clothing = new Clothing(ClothingType.TOP, Color.blue, "my t-shirt", "got it at h&m");
+        clothing = new Clothing(ClothingType.TOP, Color.blue, "my t-shirt", "got it at h&m", 0);
     }
 
     @Test
@@ -27,6 +27,7 @@ public class ClothingTest {
         assertEquals(Color.blue, clothing.getColour());
         assertEquals("my t-shirt", clothing.getName());
         assertEquals("got it at h&m", clothing.getDescription());
+        assertEquals(0, clothing.getId());
     }
 
     @Test

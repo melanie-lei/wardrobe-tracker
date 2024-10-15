@@ -21,11 +21,12 @@ public class Clothing {
     private boolean isFavourite;
     private String name;
     private String description;
+    private int id;
 
     // EFFECTS: creates a Clothing item with:
     // a specified ClothingType, colour, totalTimesWorn = 0,
     // timesWornSinceWash = 0, isFavourite = false, name, description
-    public Clothing(ClothingType t, Color c, String n, String d) {
+    public Clothing(ClothingType t, Color c, String n, String d, int id) {
         this.type = t;
         this.colour = c;
         this.name = n;
@@ -33,6 +34,7 @@ public class Clothing {
         this.totalTimesWorn = 0;
         this.timesWornSinceWash = 0;
         this.isFavourite = false;
+        this.id = id;
     }
 
     // MODIFIES: this
@@ -80,6 +82,10 @@ public class Clothing {
 
     public String getDescription() {
         return this.description;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
 }

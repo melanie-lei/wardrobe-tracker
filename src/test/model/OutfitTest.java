@@ -20,8 +20,8 @@ public class OutfitTest {
     @BeforeEach
     void runBefore() {
         outfit = new Outfit();
-        necklace = new Clothing(ClothingType.ACCESSORY, Color.red, "Necklace", "bought it at __");
-        bracelet = new Clothing(ClothingType.ACCESSORY, Color.blue, "Bracelet", "bought it at __");
+        necklace = new Clothing(ClothingType.ACCESSORY, Color.red, "Necklace", "bought it at __", 0);
+        bracelet = new Clothing(ClothingType.ACCESSORY, Color.blue, "Bracelet", "bought it at __", 1);
     }
 
     @Test
@@ -55,11 +55,11 @@ public class OutfitTest {
 
     @Test
     void testSetters() {
-        Clothing top = new Clothing(ClothingType.TOP, Color.blue, "Name", "Description");
-        Clothing jacket = new Clothing(ClothingType.JACKET, Color.blue, "Name", "Description");
-        Clothing bottoms = new Clothing(ClothingType.BOTTOMS, Color.blue, "Name", "Description");
-        Clothing shoes = new Clothing(ClothingType.SHOES, Color.blue, "Name", "Description");
-        Clothing headwear = new Clothing(ClothingType.HEADWEAR, Color.blue, "Name", "Description");
+        Clothing top = new Clothing(ClothingType.TOP, Color.blue, "Name", "Description", 2);
+        Clothing jacket = new Clothing(ClothingType.JACKET, Color.blue, "Name", "Description", 3);
+        Clothing bottoms = new Clothing(ClothingType.BOTTOMS, Color.blue, "Name", "Description", 4);
+        Clothing shoes = new Clothing(ClothingType.SHOES, Color.blue, "Name", "Description", 5);
+        Clothing headwear = new Clothing(ClothingType.HEADWEAR, Color.blue, "Name", "Description", 6);
         outfit.setTop(top);
         outfit.setJacket(jacket);
         outfit.setBottoms(bottoms);
