@@ -20,8 +20,6 @@ public class WardrobeTracker {
     private Wardrobe wardrobe;
     private Scanner scanner;
     private boolean isRunning;
-    private List<Clothing> clothing;
-    private List<Outfit> outfits;
     private static final String JSON_PATH = "./data/wardrobe.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -31,8 +29,6 @@ public class WardrobeTracker {
     WardrobeTracker() {
         wardrobe = new Wardrobe();
         scanner = new Scanner(System.in);
-        clothing = wardrobe.getClothing();
-        outfits = wardrobe.getOutfits();
         isRunning = true;
         idTracker = 0;
         jsonWriter = new JsonWriter(JSON_PATH);
@@ -180,8 +176,8 @@ public class WardrobeTracker {
     // EFFECTS: displays all clothing and presents options for user to view specific
     // item
     private void viewClothing() {
-        for (int i = 0; i < clothing.size(); i++) {
-            System.out.println("[" + String.valueOf(i + 1) + "] " + clothing.get(i).getName());
+        for (int i = 0; i < wardrobe.getClothing().size(); i++) {
+            System.out.println("[" + String.valueOf(i + 1) + "] " + wardrobe.getClothing().get(i).getName());
         }
         System.out.println("Choose a clothing item to view, [S]ort, or [E]xit");
         String input = scanner.nextLine().toUpperCase();
@@ -209,7 +205,7 @@ public class WardrobeTracker {
         do {
             isInvalid = false;
             try {
-                wardrobe.sortClothing(clothing, sortOptions.get(Integer.valueOf(input)));
+                wardrobe.sortClothing(wardrobe.getClothing(), sortOptions.get(Integer.valueOf(input)-1));
             } catch (Exception e) {
                 isInvalid = true;
                 System.out.println("Invalid Input. Try again.");
@@ -228,9 +224,9 @@ public class WardrobeTracker {
                 return;
             }
             if (option.equals("clothing")) {
-                displayClothingItem(clothing.get(Integer.valueOf(input) - 1));
+                displayClothingItem(wardrobe.getClothing().get(Integer.valueOf(input) - 1));
             } else {
-                displayOutfit(outfits.get(Integer.valueOf(input) - 1));
+                displayOutfit(wardrobe.getOutfits().get(Integer.valueOf(input) - 1));
             }
         } catch (Exception e) {
             System.out.println("Invalid input. Try again.");
@@ -284,8 +280,8 @@ public class WardrobeTracker {
     // EFFECTS: displays all outfits and presents options for user to view specific
     // item
     private void viewOutfits() {
-        for (int i = 0; i < outfits.size(); i++) {
-            System.out.println(outfits.get(i).getName());
+        for (int i = 0; i < wardrobe.getOutfits().size(); i++) {
+            System.out.println(wardrobe.getOutfits().get(i).getName());
         }
         System.out.println("Choose a outfit to view or [E]xit");
         String input = scanner.nextLine().toUpperCase();
