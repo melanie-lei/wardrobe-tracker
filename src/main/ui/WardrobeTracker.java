@@ -150,7 +150,8 @@ public class WardrobeTracker {
         wardrobe.addOutfit(outfit);
     }
 
-    // EFFECTS: displays list of clothing and processes user's choice and returns chosen clothing
+    // EFFECTS: displays list of clothing and processes user's choice and returns
+    // chosen clothing
     private Clothing chooseClothing(List<Clothing> listOfClothing) {
         for (int i = 0; i < listOfClothing.size(); i++) {
             System.out.println("[" + String.valueOf(i + 1) + "] " + listOfClothing.get(i).getName());
