@@ -9,6 +9,11 @@ import model.Clothing;
 import model.Clothing.ClothingType;
 import model.Outfit;
 import model.Wardrobe;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class WardrobeTracker {
 
@@ -17,6 +22,10 @@ public class WardrobeTracker {
     private boolean isRunning;
     private List<Clothing> clothing;
     private List<Outfit> outfits;
+    private static final String JSON_PATH = "./data/wardrobe.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private int idTracker;
 
     // EFFECTS: creates a wardrobe tracker and initiates the application
     WardrobeTracker() {
@@ -25,6 +34,9 @@ public class WardrobeTracker {
         clothing = wardrobe.getClothing();
         outfits = wardrobe.getOutfits();
         isRunning = true;
+        idTracker = 0;
+        jsonWriter = new JsonWriter(JSON_PATH);
+        jsonReader = new JsonReader(JSON_PATH);
         System.out.println("Building wardrobe...");
 
         while (this.isRunning) {
@@ -87,7 +99,7 @@ public class WardrobeTracker {
         input = scanner.nextLine();
         ClothingType type = chooseType(input);
 
-        wardrobe.addClothing(new Clothing(type, colour, name, description));
+        wardrobe.addClothing(new Clothing(type, colour, name, description, idTracker++));
     }
 
     // EFFECTS: processes user choice for type of clothing
