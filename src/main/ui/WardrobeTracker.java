@@ -15,6 +15,7 @@ import persistence.JsonWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// handles all the UI
 public class WardrobeTracker {
 
     private Wardrobe wardrobe;
