@@ -156,7 +156,7 @@ public class WardrobeTracker {
         outfit.setHeadwear(chooseClothing(wardrobe.getHeadwear()));
         System.out.println("Choose accessory: ");
         outfit.addAccessory(chooseClothing(wardrobe.getAccessories()));
-        wardrobe.addOutfit(outfit);
+        wardrobe.addOutfit(outfit.saveOutfit());
     }
 
     // EFFECTS: displays list of clothing and processes user's choice and returns

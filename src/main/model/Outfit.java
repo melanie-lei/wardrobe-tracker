@@ -20,6 +20,18 @@ public class Outfit {
         accessories = new ArrayList<Clothing>();
     }
 
+    public Outfit saveOutfit() {
+        this.top.wear();
+        this.jacket.wear();
+        this.bottoms.wear();
+        this.shoes.wear();
+        this.headwear.wear();
+        for(Clothing a : this.accessories) {
+            a.wear();
+        }
+        return this;
+    }
+
     // REQUIRES: c has a type ACCESSORY
     // MODIFIES: this
     // EFFECTS: adds an accessory clothing to current accessories
