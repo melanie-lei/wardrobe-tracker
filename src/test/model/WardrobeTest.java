@@ -35,6 +35,7 @@ public class WardrobeTest {
         assertEquals(1, wardrobe.getOutfits().size());
     }
 
+    @SuppressWarnings("methodlength")
     @Test
     void testAddClothing() {
         clothing1 = new Clothing(ClothingType.TOP, Color.blue, "blue shirt", "bought at h&m", 0);

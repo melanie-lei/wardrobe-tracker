@@ -206,7 +206,7 @@ public class WardrobeTracker {
         do {
             isInvalid = false;
             try {
-                wardrobe.sortClothing(wardrobe.getClothing(), sortOptions.get(Integer.valueOf(input)-1));
+                wardrobe.sortClothing(wardrobe.getClothing(), sortOptions.get(Integer.valueOf(input) - 1));
             } catch (Exception e) {
                 isInvalid = true;
                 System.out.println("Invalid Input. Try again.");
