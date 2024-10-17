@@ -16,12 +16,22 @@ public class OutfitTest {
     Outfit outfit;
     Clothing necklace;
     Clothing bracelet;
+    Clothing top;
+    Clothing jacket;
+    Clothing bottoms;
+    Clothing shoes;
+    Clothing headwear;
 
     @BeforeEach
     void runBefore() {
         outfit = new Outfit();
         necklace = new Clothing(ClothingType.ACCESSORY, Color.red, "Necklace", "bought it at __", 0);
         bracelet = new Clothing(ClothingType.ACCESSORY, Color.blue, "Bracelet", "bought it at __", 1);
+        top = new Clothing(ClothingType.TOP, Color.blue, "Name", "Description", 2);
+        jacket = new Clothing(ClothingType.JACKET, Color.blue, "Name", "Description", 3);
+        bottoms = new Clothing(ClothingType.BOTTOMS, Color.blue, "Name", "Description", 4);
+        shoes = new Clothing(ClothingType.SHOES, Color.blue, "Name", "Description", 5);
+        headwear = new Clothing(ClothingType.HEADWEAR, Color.blue, "Name", "Description", 6);
     }
 
     @Test
@@ -55,20 +65,40 @@ public class OutfitTest {
 
     @Test
     void testSetters() {
-        Clothing top = new Clothing(ClothingType.TOP, Color.blue, "Name", "Description", 2);
-        Clothing jacket = new Clothing(ClothingType.JACKET, Color.blue, "Name", "Description", 3);
-        Clothing bottoms = new Clothing(ClothingType.BOTTOMS, Color.blue, "Name", "Description", 4);
-        Clothing shoes = new Clothing(ClothingType.SHOES, Color.blue, "Name", "Description", 5);
-        Clothing headwear = new Clothing(ClothingType.HEADWEAR, Color.blue, "Name", "Description", 6);
         outfit.setTop(top);
         outfit.setJacket(jacket);
         outfit.setBottoms(bottoms);
         outfit.setShoes(shoes);
         outfit.setHeadwear(headwear);
+        outfit.setDescription("description");
         assertEquals(top, outfit.getTop());
         assertEquals(jacket, outfit.getJacket());
         assertEquals(bottoms, outfit.getBottoms());
         assertEquals(shoes, outfit.getShoes());
         assertEquals(headwear, outfit.getHeadwear());
+        assertEquals("description", outfit.getDescription());
     }
+
+    @Test
+    void testSaveOutfit() {
+        outfit.setTop(top);
+        outfit.setJacket(jacket);
+        outfit.setBottoms(bottoms);
+        outfit.setShoes(shoes);
+        outfit.setHeadwear(headwear);
+        outfit.addAccessory(necklace);
+        outfit.addAccessory(bracelet);
+
+        outfit.saveOutfit();
+
+        assertEquals(1, outfit.getTop().getTotalTimesWorn());
+        assertEquals(1, outfit.getJacket().getTotalTimesWorn());
+        assertEquals(1, outfit.getBottoms().getTotalTimesWorn());
+        assertEquals(1, outfit.getShoes().getTotalTimesWorn());
+        assertEquals(1, outfit.getHeadwear().getTotalTimesWorn());
+        assertEquals(1, outfit.getAccessories().get(0).getTotalTimesWorn());
+        assertEquals(1, outfit.getAccessories().get(1).getTotalTimesWorn());
+
+    }
+
 }
