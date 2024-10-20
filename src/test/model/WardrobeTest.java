@@ -118,6 +118,7 @@ public class WardrobeTest {
     @Test
     void testClothingLookup() {
         clothing1 = new Clothing(ClothingType.TOP, Color.blue, "blue shirt", "bought at h&m", 0);
+        wardrobe.addClothing(clothing1);
         assertEquals(clothing1, wardrobe.clothingLookup(0));
         assertNull(wardrobe.clothingLookup(23432));
     }

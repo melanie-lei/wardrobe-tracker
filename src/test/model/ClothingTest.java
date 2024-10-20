@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.Color;
 
@@ -13,12 +14,14 @@ import model.Clothing.ClothingType;
 public class ClothingTest {
 
     private Clothing clothing;
+    private Clothing overridedClothing;
     private Clothing accessory;
 
     @BeforeEach
     void runBefore() {
         clothing = new Clothing(ClothingType.TOP, Color.blue, "my t-shirt", "got it at h&m", 0);
-        accessory = new Clothing(ClothingType.ACCESSORY, Color.blue, "my t-shirt", "got it at h&m", 0);
+        overridedClothing = new Clothing(ClothingType.TOP, Color.blue, "my t-shirt", "got it at h&m", 2, 4, 5, true);
+        accessory = new Clothing(ClothingType.ACCESSORY, Color.blue, "my t-shirt", "got it at h&m", 1);
     }
 
     @Test
@@ -30,6 +33,17 @@ public class ClothingTest {
         assertEquals("my t-shirt", clothing.getName());
         assertEquals("got it at h&m", clothing.getDescription());
         assertEquals(0, clothing.getId());
+    }
+
+    @Test
+    void testOverridedContructor() {
+        assertTrue(overridedClothing.isFavourite());
+        assertEquals(5, overridedClothing.getTimesWornSinceWash());
+        assertEquals(4, overridedClothing.getTotalTimesWorn());
+        assertEquals(Color.blue, overridedClothing.getColour());
+        assertEquals("my t-shirt", overridedClothing.getName());
+        assertEquals("got it at h&m", overridedClothing.getDescription());
+        assertEquals(2, overridedClothing.getId());
     }
 
     @Test
