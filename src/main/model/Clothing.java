@@ -38,10 +38,12 @@ public class Clothing {
     }
 
     // MODIFIES: this
-    // EFFECTS: increments totalTimesWorn and timesWornSinceWash
+    // EFFECTS: increments totalTimesWorn and timesWornSinceWash but not for accessories
     public Clothing wear() {
         this.totalTimesWorn++;
-        this.timesWornSinceWash++;
+        if (this.type != ClothingType.ACCESSORY){
+            this.timesWornSinceWash++;
+        }
         return this;
     }
 

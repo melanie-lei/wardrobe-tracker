@@ -13,10 +13,12 @@ import model.Clothing.ClothingType;
 public class ClothingTest {
 
     private Clothing clothing;
+    private Clothing accessory;
 
     @BeforeEach
     void runBefore() {
         clothing = new Clothing(ClothingType.TOP, Color.blue, "my t-shirt", "got it at h&m", 0);
+        accessory = new Clothing(ClothingType.ACCESSORY, Color.blue, "my t-shirt", "got it at h&m", 0);
     }
 
     @Test
@@ -39,6 +41,10 @@ public class ClothingTest {
         clothing.wear();
         assertEquals(2, clothing.getTotalTimesWorn());
         assertEquals(2, clothing.getTimesWornSinceWash());
+
+        accessory.wear();
+        assertEquals(1, accessory.getTotalTimesWorn());
+        assertEquals(0, accessory.getTimesWornSinceWash());
     }
 
     @Test
