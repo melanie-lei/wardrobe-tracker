@@ -3,8 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // An outfit which is made up of Clothing items
-public class Outfit {
+public class Outfit implements Writable {
 
     private Clothing top;
     private Clothing jacket;
@@ -109,6 +113,12 @@ public class Outfit {
 
     public String getDescription() {
         return this.description;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toJson'");
     }
 
 }

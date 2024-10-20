@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // A wardrobe which consists of Outfits and Clothing items organized by type
-public class Wardrobe {
+public class Wardrobe implements Writable {
 
     private List<Clothing> clothing;
     private List<Clothing> tops;
@@ -139,5 +143,11 @@ public class Wardrobe {
 
     public List<Clothing> getAccessories() {
         return this.accessories;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toJson'");
     }
 }

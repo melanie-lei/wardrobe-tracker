@@ -2,9 +2,13 @@ package model;
 
 import java.awt.Color;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // A Clothing item that keeps track of its own properties:
 // type, colour, totalTimesWorn, timesWornSinceWash, isFavourite, name, description
-public class Clothing {
+public class Clothing implements Writable {
     public enum ClothingType {
         TOP,
         JACKET,
@@ -103,6 +107,12 @@ public class Clothing {
 
     public int getId() {
         return this.id;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toJson'");
     }
 
 }
