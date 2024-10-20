@@ -93,12 +93,20 @@ public class Wardrobe {
             case HEADWEAR:
                 this.headwear.add(c);
                 break;
-            case ACCESSORY:
+            default:
                 this.accessories.add(c);
                 break;
-            default:
-                break;
         }
+    }
+
+    public Clothing clothingLookup(int id) {
+        Clothing clothingItem = null;
+        for (Clothing c : this.clothing) {
+            if (c.getId() == id) {
+                clothingItem = c;
+            }
+        }
+        return clothingItem;
     }
 
     public List<Outfit> getOutfits() {
