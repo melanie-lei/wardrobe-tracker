@@ -11,13 +11,14 @@ import java.util.List;
 public class JsonTest {
 
     protected void checkClothing(int id, String name, String description, Color colour, int totalTimesWorn,
-            int timesWornSinceWash, Clothing clothing) {
+            int timesWornSinceWash, boolean isFavourite, Clothing clothing) {
         assertEquals(id, clothing.getId());
         assertEquals(name, clothing.getName());
         assertEquals(description, clothing.getDescription());
         assertEquals(colour, clothing.getColour());
         assertEquals(totalTimesWorn, clothing.getTotalTimesWorn());
         assertEquals(timesWornSinceWash, clothing.getTimesWornSinceWash());
+        assertEquals(isFavourite, clothing.isFavourite());
 
     }
 
