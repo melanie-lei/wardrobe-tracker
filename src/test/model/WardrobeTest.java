@@ -1,6 +1,7 @@
 package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -112,6 +113,13 @@ public class WardrobeTest {
         clothing1.wear();
         wardrobe.sortClothing(wardrobe.getClothing(), "timesWornSinceWash");
         assertEquals("blue shirt", wardrobe.getClothing().get(0).getName());
+    }
+
+    @Test
+    void testClothingLookup() {
+        clothing1 = new Clothing(ClothingType.TOP, Color.blue, "blue shirt", "bought at h&m", 0);
+        assertEquals(clothing1, wardrobe.clothingLookup(0));
+        assertNull(wardrobe.clothingLookup(23432));
     }
 
 }
