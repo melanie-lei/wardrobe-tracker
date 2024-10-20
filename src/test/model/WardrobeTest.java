@@ -83,6 +83,7 @@ public class WardrobeTest {
 
     }
 
+    @SuppressWarnings("methodlength")
     @Test
     void testSortClothing() {
         clothing1 = new Clothing(ClothingType.TOP, Color.blue, "blue shirt", "bought at h&m", 0);
@@ -109,6 +110,14 @@ public class WardrobeTest {
         clothing2.setFavourite(false);
         wardrobe.sortClothing(wardrobe.getClothing(), "isFavourite");
         assertEquals("green shirt", wardrobe.getClothing().get(0).getName());
+
+        clothing1.setFavourite(true);
+        wardrobe.sortClothing(wardrobe.getClothing(), "isFavourite");
+        assertEquals("blue shirt", wardrobe.getClothing().get(0).getName());
+
+        clothing2.setFavourite(true);
+        wardrobe.sortClothing(wardrobe.getClothing(), "isFavourite");
+        assertEquals("blue shirt", wardrobe.getClothing().get(0).getName());
 
         clothing1.wear();
         wardrobe.sortClothing(wardrobe.getClothing(), "timesWornSinceWash");
