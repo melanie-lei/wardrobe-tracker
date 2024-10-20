@@ -26,7 +26,7 @@ public class Outfit {
         this.bottoms.wear();
         this.shoes.wear();
         this.headwear.wear();
-        for(Clothing a : this.accessories) {
+        for (Clothing a : this.accessories) {
             a.wear();
         }
         return this;
