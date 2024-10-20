@@ -13,7 +13,7 @@ public class Main {
         Color myColor = Color.blue;
         String colorS = String.valueOf(myColor.getRGB());
         Color c = new Color(Integer.parseInt(colorS));
-        
+
         System.out.println(colorS);
     }
 }

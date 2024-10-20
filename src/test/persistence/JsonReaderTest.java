@@ -38,6 +38,7 @@ class JsonReaderTest extends JsonTest {
         }
     }
 
+    @SuppressWarnings("methodlength")
     @Test
     void testReaderGeneralWardrobe() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralWardrobe.json");
@@ -45,17 +46,23 @@ class JsonReaderTest extends JsonTest {
             Wardrobe w = reader.read();
             List<Outfit> outfits = w.getOutfits();
             assertEquals(1, outfits.size());
-            List<Integer> list = new ArrayList<Integer>();
-            list.add(5);
-            checkOutfit("my outfit", "this is a description", 0, 2, 1, 3, 4, list, outfits.get(0));
+            List<Integer> accessoryList = new ArrayList<Integer>();
+            accessoryList.add(5);
+            checkOutfit("my outfit", "this is a description", 0, 2, 1, 3, 4, accessoryList, outfits.get(0));
             List<Clothing> clothing = w.getClothing();
             assertEquals(6, clothing.size());
-            checkClothing(0, "blue shirt", "this is my shirt", new Color(Integer.parseInt("-16776961")), 4, 2, clothing.get(0));
-            checkClothing(1, "red pants", "these are my pants", new Color(Integer.parseInt("-65536")), 6, 1, clothing.get(1));
-            checkClothing(2, "red jacket", "my jacket", new Color(Integer.parseInt("-65536")), 6, 2, clothing.get(2));
-            checkClothing(3, "red shoes", "these are my shoes", new Color(Integer.parseInt("-65536")), 5, 1, clothing.get(3));
-            checkClothing(4, "red hat", "this is my hat", new Color(Integer.parseInt("-65536")), 3, 1, clothing.get(4));
-            checkClothing(5, "necklace", "accessory", new Color(Integer.parseInt("-65536")), 6, 4, clothing.get(5));
+            checkClothing(0, "blue shirt", "this is my shirt",
+                    new Color(Integer.parseInt("-16776961")), 4, 2, clothing.get(0));
+            checkClothing(1, "red pants", "these are my pants",
+                    new Color(Integer.parseInt("-65536")), 6, 1, clothing.get(1));
+            checkClothing(2, "red jacket", "my jacket",
+                    new Color(Integer.parseInt("-65536")), 6, 2, clothing.get(2));
+            checkClothing(3, "red shoes", "these are my shoes",
+                    new Color(Integer.parseInt("-65536")), 5, 1, clothing.get(3));
+            checkClothing(4, "red hat", "this is my hat",
+                    new Color(Integer.parseInt("-65536")), 3, 1, clothing.get(4));
+            checkClothing(5, "necklace", "accessory",
+                    new Color(Integer.parseInt("-65536")), 6, 4, clothing.get(5));
 
         } catch (IOException e) {
             fail("Couldn't read from file");
