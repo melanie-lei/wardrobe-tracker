@@ -37,11 +37,26 @@ public class Clothing {
         this.id = id;
     }
 
+    // EFFECTS: creates a Clothing item with:
+    // a specified ClothingType, colour, totalTimesWorn,
+    // timesWornSinceWash, isFavourite, name, description
+    public Clothing(ClothingType t, Color c, String n, String d, int id, int tt, int tw, boolean f) {
+        this.type = t;
+        this.colour = c;
+        this.name = n;
+        this.description = d;
+        this.totalTimesWorn = tt;
+        this.timesWornSinceWash = tw;
+        this.isFavourite = f;
+        this.id = id;
+    }
+
     // MODIFIES: this
-    // EFFECTS: increments totalTimesWorn and timesWornSinceWash but not for accessories
+    // EFFECTS: increments totalTimesWorn and timesWornSinceWash but not for
+    // accessories
     public Clothing wear() {
         this.totalTimesWorn++;
-        if (this.type != ClothingType.ACCESSORY){
+        if (this.type != ClothingType.ACCESSORY) {
             this.timesWornSinceWash++;
         }
         return this;
