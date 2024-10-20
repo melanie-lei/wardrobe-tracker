@@ -5,7 +5,7 @@
             "name": "blue shirt",
             "description": "this is my shirt",
             "type": "TOP",
-            "colour": "-16776961",
+            "colour": -16776961,
             "totalTimesWorn": 4,
             "timesWornSinceWash": 2,
             "isFavourite": true
@@ -15,7 +15,7 @@
             "name": "red pants",
             "description": "these are my pants",
             "type": "BOTTOMS",
-            "colour": "-65536",
+            "colour": -65536,
             "totalTimesWorn": 6,
             "timesWornSinceWash": 1,
             "isFavourite": false
@@ -25,7 +25,7 @@
             "name": "red jacket",
             "description": "my jacket",
             "type": "JACKET",
-            "colour": "-65536",
+            "colour": -65536,
             "totalTimesWorn": 6,
             "timesWornSinceWash": 2,
             "isFavourite": false
