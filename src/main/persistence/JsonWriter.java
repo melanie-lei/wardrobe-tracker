@@ -31,18 +31,6 @@ public class JsonWriter {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of clothing to file
-    private void writeClothing(Wardrobe wr) {
-
-    }
-
-    // MODIFIES: this
-    // EFFECTS: writes JSON representation of outfits to file
-    private void writeOutfits(Wardrobe wr) {
-
-    }
-
-    // MODIFIES: this
     // EFFECTS: closes writer
     public void close() {
 
