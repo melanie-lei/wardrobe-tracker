@@ -28,7 +28,7 @@ class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderEmptyWorkRoom() {
-        JsonReader reader = new JsonReader("project-k3k1a/data/testReaderEmptyWardrobe.json");
+        JsonReader reader = new JsonReader("./data/testReaderEmptyWardrobe.json");
         try {
             Wardrobe w = reader.read();
             assertEquals(0, w.getOutfits().size());
@@ -41,7 +41,7 @@ class JsonReaderTest extends JsonTest {
     @SuppressWarnings("methodlength")
     @Test
     void testReaderGeneralWardrobe() {
-        JsonReader reader = new JsonReader("project-k3k1a/data/testReaderGeneralWardrobe.json");
+        JsonReader reader = new JsonReader("./data/testReaderGeneralWardrobe.json");
         try {
             Wardrobe w = reader.read();
             List<Outfit> outfits = w.getOutfits();
