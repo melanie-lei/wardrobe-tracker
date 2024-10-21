@@ -127,7 +127,7 @@ public class Outfit implements Writable {
         json.put("shoes", this.shoes.getId());
         json.put("headwear", this.headwear.getId());
         JSONArray jsonArray = new JSONArray();
-        for(Clothing c : accessories) {
+        for (Clothing c : accessories) {
             jsonArray.put(c.getId());
         }
         json.put("accessories", jsonArray);

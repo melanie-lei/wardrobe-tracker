@@ -32,7 +32,7 @@ public class JsonTest {
         assertEquals(shoes, outfit.getShoes().getId());
         assertEquals(headwear, outfit.getHeadwear().getId());
         int c = 0;
-        for(Integer i : accessories) {
+        for (Integer i : accessories) {
             assertEquals(i, outfit.getAccessories().get(c++).getId());
         }
     }
