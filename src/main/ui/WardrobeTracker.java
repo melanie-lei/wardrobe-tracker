@@ -28,16 +28,69 @@ public class WardrobeTracker {
 
     // EFFECTS: creates a wardrobe tracker and initiates the application
     WardrobeTracker() {
+        init();
+
+        System.out.println("Welcome! Would you like to load the wardrobe from the last savefile? [Y] or [N]");
+        handleSaveInput("load");
+
+        while (this.isRunning) {
+            menuHandler();
+        }
+
+        System.out.println("Would you like to save the state of the wardrobe? [Y] or [N]");
+        handleSaveInput("save");
+    }
+
+    // EFFECTS: initializes the instances used for the wardrobe tracker
+    private void init() {
         wardrobe = new Wardrobe();
         scanner = new Scanner(System.in);
         isRunning = true;
         idTracker = 0;
         jsonWriter = new JsonWriter(JSON_PATH);
         jsonReader = new JsonReader(JSON_PATH);
-        System.out.println("Building wardrobe...");
+    }
 
-        while (this.isRunning) {
-            menuHandler();
+    // REQUIRES: command must be "save" or "load"
+    // EFFECTS: handles the input for saving and loading
+    private void handleSaveInput(String command) {
+        boolean isInvalid = true;
+        do {
+            String input = scanner.nextLine().toUpperCase();
+            if (input.equals("Y")) {
+                if (command.equals("save")) {
+                    saveWardrobe();
+                } else {
+                    loadWardrobe();
+                }
+                isInvalid = false;
+            } else if (input.equals("N")) {
+                isInvalid = false;
+            } else {
+                System.out.println("Invalid input, try again.");
+            }
+        } while (isInvalid);
+    }
+
+    // EFFECTS: writes the wardrobe into JSON data and saves it
+    private void saveWardrobe() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(wardrobe);
+            jsonWriter.close();
+            System.out.println("Saved wardrobe to " + JSON_PATH);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_PATH);
+        }
+    }
+
+    // EFFECTS: reads the saved JSON data and loads it
+    private void loadWardrobe() {
+        try {
+            wardrobe = jsonReader.read();
+            System.out.println("Loaded wardrobe from " + JSON_PATH);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_PATH);
         }
     }
 
