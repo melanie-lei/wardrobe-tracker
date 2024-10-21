@@ -1,1 +1,87 @@
-{}
+{
+    "clothing": [
+        {
+            "colour": -65536,
+            "timesWornSinceWash": 0,
+            "name": "Necklace",
+            "description": "bought it at __",
+            "totalTimesWorn": 0,
+            "id": 0,
+            "type": "ACCESSORY",
+            "isFavourite": false
+        },
+        {
+            "colour": -16776961,
+            "timesWornSinceWash": 0,
+            "name": "Bracelet",
+            "description": "bought it at __",
+            "totalTimesWorn": 0,
+            "id": 1,
+            "type": "ACCESSORY",
+            "isFavourite": false
+        },
+        {
+            "colour": -16776961,
+            "timesWornSinceWash": 5,
+            "name": "Top Name",
+            "description": "Description",
+            "totalTimesWorn": 4,
+            "id": 2,
+            "type": "TOP",
+            "isFavourite": false
+        },
+        {
+            "colour": -16776961,
+            "timesWornSinceWash": 0,
+            "name": "Name",
+            "description": "Description",
+            "totalTimesWorn": 0,
+            "id": 3,
+            "type": "JACKET",
+            "isFavourite": false
+        },
+        {
+            "colour": -16776961,
+            "timesWornSinceWash": 0,
+            "name": "Name",
+            "description": "Description",
+            "totalTimesWorn": 0,
+            "id": 4,
+            "type": "BOTTOMS",
+            "isFavourite": false
+        },
+        {
+            "colour": -16776961,
+            "timesWornSinceWash": 0,
+            "name": "Name",
+            "description": "Description",
+            "totalTimesWorn": 0,
+            "id": 5,
+            "type": "SHOES",
+            "isFavourite": false
+        },
+        {
+            "colour": -16776961,
+            "timesWornSinceWash": 0,
+            "name": "Name",
+            "description": "Description",
+            "totalTimesWorn": 0,
+            "id": 6,
+            "type": "HEADWEAR",
+            "isFavourite": false
+        }
+    ],
+    "outfits": [{
+        "headwear": 6,
+        "top": 2,
+        "accessories": [
+            0,
+            1
+        ],
+        "name": "outfit name",
+        "description": "outfit description",
+        "jacket": 3,
+        "bottoms": 4,
+        "shoes": 5
+    }]
+}

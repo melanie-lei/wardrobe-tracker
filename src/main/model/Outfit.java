@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import persistence.Writable;
@@ -117,8 +118,20 @@ public class Outfit implements Writable {
 
     @Override
     public JSONObject toJson() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toJson'");
+        JSONObject json = new JSONObject();
+        json.put("name", this.name);
+        json.put("description", this.description);
+        json.put("top", this.top.getId());
+        json.put("jacket", this.jacket.getId());
+        json.put("bottoms", this.bottoms.getId());
+        json.put("shoes", this.shoes.getId());
+        json.put("headwear", this.headwear.getId());
+        JSONArray jsonArray = new JSONArray();
+        for(Clothing c : accessories) {
+            jsonArray.put(c.getId());
+        }
+        json.put("accessories", jsonArray);
+        return json;
     }
 
 }

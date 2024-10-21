@@ -35,7 +35,7 @@
             "name": "red shoes",
             "description": "these are my shoes",
             "type": "SHOES",
-            "colour": "-65536",
+            "colour": -65536,
             "totalTimesWorn": 5,
             "timesWornSinceWash": 1,
             "isFavourite": false
@@ -45,7 +45,7 @@
             "name": "red hat",
             "description": "this is my hat",
             "type": "HEADWEAR",
-            "colour": "-65536",
+            "colour": -65536,
             "totalTimesWorn": 3,
             "timesWornSinceWash": 1,
             "isFavourite": false
@@ -55,7 +55,7 @@
             "name": "necklace",
             "description": "accessory",
             "type": "ACCESSORY",
-            "colour": "-65536",
+            "colour": -65536,
             "totalTimesWorn": 6,
             "timesWornSinceWash": 4,
             "isFavourite": false

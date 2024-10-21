@@ -38,12 +38,12 @@ class JsonWriterTest extends JsonTest {
     void testWriterEmptyWorkroom() {
         try {
             Wardrobe wd = new Wardrobe();
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyWardrobe.json");
+            JsonWriter writer = new JsonWriter("project-k3k1a/data/testWriterEmptyWardrobe.json");
             writer.open();
             writer.write(wd);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyWardrobe.json");
+            JsonReader reader = new JsonReader("project-k3k1a/data/testWriterEmptyWardrobe.json");
             wd = reader.read();
             assertEquals(0, wd.getClothing().size());
             assertEquals(0, wd.getOutfits().size());
@@ -83,14 +83,15 @@ class JsonWriterTest extends JsonTest {
             outfit.addAccessory(necklace);
             outfit.addAccessory(bracelet);
             outfit.setName("outfit name");
-            outfit.setDescription("oufit description");
+            outfit.setDescription("outfit description");
+            wd.addOutfit(outfit);
 
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyWardrobe.json");
+            JsonWriter writer = new JsonWriter("project-k3k1a/data/testWriterGeneralWardrobe.json");
             writer.open();
             writer.write(wd);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyWardrobe.json");
+            JsonReader reader = new JsonReader("project-k3k1a/data/testWriterGeneralWardrobe.json");
             wd = reader.read();
             assertEquals(7, wd.getClothing().size());
             assertEquals(1, wd.getOutfits().size());

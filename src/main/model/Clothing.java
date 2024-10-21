@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import persistence.Writable;
@@ -111,8 +112,33 @@ public class Clothing implements Writable {
 
     @Override
     public JSONObject toJson() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toJson'");
+        JSONObject json = new JSONObject();
+        json.put("id", this.id);
+        json.put("name", this.name);
+        json.put("description", this.description);
+        json.put("type", typeToString());
+        json.put("colour", this.colour.getRGB());
+        json.put("totalTimesWorn", this.totalTimesWorn);
+        json.put("timesWornSinceWash", this.timesWornSinceWash);
+        json.put("isFavourite", this.isFavourite);
+        return json;
+    }
+
+    private String typeToString() {
+        switch (type) {
+            case TOP:
+                return "TOP";
+            case JACKET:
+                return "JACKET";
+            case BOTTOMS:
+                return "BOTTOMS";
+            case SHOES:
+                return "SHOES";
+            case HEADWEAR:
+                return "HEADWEAR";
+            default:
+                return "ACCESSORY";
+        }
     }
 
 }
