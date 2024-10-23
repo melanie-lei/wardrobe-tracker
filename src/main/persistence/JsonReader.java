@@ -79,6 +79,8 @@ public class JsonReader {
         wd.addClothing(clothing);
     }
 
+    // REQUIRES: s is one of "TOP", "JACKET", "BOTTOMS", "SHOES", "HEADWEAR", "ACCESSORY"
+    // EFFECTS: returns clothing type from string
     private ClothingType toClothingType(String s) {
         switch (s) {
             case "TOP":

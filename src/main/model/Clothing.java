@@ -124,6 +124,8 @@ public class Clothing implements Writable {
         return json;
     }
 
+
+    // EFFECTS: returns this clothing type as string
     private String typeToString() {
         switch (type) {
             case TOP:
