@@ -62,6 +62,7 @@ public class Wardrobe implements Writable {
         }
     }
 
+    // EFFECTS: returns -1 if a is fav and b isnt, 1 if b is fav and a isnt, and 0 if they are same value
     private int favouriteSort(boolean a, boolean b) {
         if (a && !b) {
             return -1;
@@ -104,6 +105,7 @@ public class Wardrobe implements Writable {
         }
     }
 
+    // EFFECTS: looks up and returns clothing from the id
     public Clothing clothingLookup(int id) {
         Clothing clothingItem = null;
         for (Clothing c : this.clothing) {

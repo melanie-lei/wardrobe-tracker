@@ -25,6 +25,8 @@ public class Outfit implements Writable {
         accessories = new ArrayList<Clothing>();
     }
 
+    // Modifies: this
+    // Effects: wears all clothing in the outfits
     public Outfit saveOutfit() {
         this.top.wear();
         this.jacket.wear();
