@@ -21,9 +21,7 @@ public class WardrobeTracker {
     private Wardrobe wardrobe;
     private Scanner scanner;
     private boolean isRunning;
-    private static final String JSON_PATH = "./data/wardrobe.json";
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private WardrobeSaver wardrobeSaver;
     private int idTracker;
 
     // EFFECTS: creates a wardrobe tracker and initiates the application
@@ -47,8 +45,7 @@ public class WardrobeTracker {
         scanner = new Scanner(System.in);
         isRunning = true;
         idTracker = 0;
-        jsonWriter = new JsonWriter(JSON_PATH);
-        jsonReader = new JsonReader(JSON_PATH);
+        wardrobeSaver = new WardrobeSaver();
     }
 
     // REQUIRES: command must be "save" or "load"
@@ -74,24 +71,12 @@ public class WardrobeTracker {
 
     // EFFECTS: writes the wardrobe into JSON data and saves it
     private void saveWardrobe() {
-        try {
-            jsonWriter.open();
-            jsonWriter.write(wardrobe);
-            jsonWriter.close();
-            System.out.println("Saved wardrobe to " + JSON_PATH);
-        } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_PATH);
-        }
+        wardrobeSaver.saveWardrobe(this.wardrobe);
     }
 
     // EFFECTS: reads the saved JSON data and loads it
     private void loadWardrobe() {
-        try {
-            wardrobe = jsonReader.read();
-            System.out.println("Loaded wardrobe from " + JSON_PATH);
-        } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_PATH);
-        }
+        wardrobeSaver.loadWardrobe(this.wardrobe);
     }
 
     // EFFECTS: displays menu and retrieves user input
