@@ -25,6 +25,7 @@ public class WardrobePanel extends JPanel {
     private int idTracker;
     private WardrobeSaver wardrobeSaver;
     private boolean isClothing;
+    private Clothing currentClothing;
 
     WardrobePanel(Wardrobe wd) {
         super();
@@ -32,6 +33,11 @@ public class WardrobePanel extends JPanel {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setBackground(Color.white);
         this.wardrobe = wd;
+    }
+
+    public void changeClothing(Clothing c) {
+        isClothing = true;
+        currentClothing = c;
     }
 
      // EFFECTS: initializes the instances used for the wardrobe panel
@@ -47,24 +53,22 @@ public class WardrobePanel extends JPanel {
 		super.paintComponent(g);
 		
 		drawWardrobe(g);
-		
+		repaint();
 
 	}
 
     private void drawWardrobe(Graphics g) {
-        if (isClothing) {
-            
-            drawClothing(g);
+        if (isClothing) { 
+            drawSingleClothing(g);
         }
     }
 
-    private void drawClothing(Graphics g) {
-        for (Clothing c : wardrobe.getClothing()) {
-            drawSingleClothing(c, g);
-        }
-    }
 
-    private void drawSingleClothing(Clothing c, Graphics g) {
+    private void drawSingleClothing(Graphics g) {
+        if (currentClothing != null) {
+            g.setColor(currentClothing.getColour());
+            g.fillRect(10, 20, 50, 50);
+        }
         
     }
 

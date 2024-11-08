@@ -1,18 +1,15 @@
 package ui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+
 import java.util.List;
 import java.util.Vector;
 
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
+import javax.swing.*;
+import java.awt.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 import model.Clothing;
 import model.Clothing.ClothingType;
@@ -27,16 +24,17 @@ public class WardrobeFrame extends JFrame {
     private static final int HEIGHT = 700;
     private List<Clothing> displayedClothing;
     private List<Outfit> displayedOutfits;
+    private JList<Clothing> clothingList;
 
     // EFFECTS: Creates an instance of WardrobeFrame and instantiates displays
     WardrobeFrame() {
         super("Wardrobe");
-        setLayout(new GridLayout(1, 3));
+        setLayout(new GridLayout(2, 3));
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wardrobe = new Wardrobe();
         wardrobe.addClothing(new Clothing(ClothingType.TOP, Color.blue, "my shirt", "my description", 0));
-        wardrobe.addClothing(new Clothing(ClothingType.BOTTOMS, Color.blue, "my pants", "my pants description", 1));
+        wardrobe.addClothing(new Clothing(ClothingType.BOTTOMS, Color.red, "my pants", "my pants description", 1));
         Outfit o = new Outfit();
         o.setName("name of outfit");
         wardrobe.addOutfit(o);
@@ -44,17 +42,30 @@ public class WardrobeFrame extends JFrame {
         clothingList();
         outfitList();
         add(wp);
+        chooseClothingButton();
         pack();
         setVisible(true);
+    }
+
+    private void chooseClothingButton() {
+        JButton button = new JButton("Choose");
+        button.setActionCommand("choose");
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                wp.changeClothing(clothingList.getSelectedValue());
+                System.out.println(clothingList.getSelectedValue().getName());
+			}
+        });
+        add(button);
     }
 
     // EFFECTS: adds list of clothing to a JList and puts it on the frame
     private void clothingList() {
         displayedClothing = wardrobe.getClothing();
-        JList<Clothing> list = new JList<>(new Vector<Clothing>(displayedClothing));
-        list.setVisibleRowCount(10);
-        list.setCellRenderer(new ClothingListCellRenderer());
-        add(new JScrollPane(list));
+        clothingList = new JList<>(new Vector<Clothing>(displayedClothing));
+        clothingList.setVisibleRowCount(10);
+        clothingList.setCellRenderer(new ClothingListCellRenderer());
+        add(new JScrollPane(clothingList));
         
     }
 
