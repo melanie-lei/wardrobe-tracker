@@ -35,8 +35,6 @@ public class WardrobeFrame extends JFrame {
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wardrobe = new Wardrobe();
-        wardrobe.addClothing(new Clothing(ClothingType.TOP, Color.blue, "my shirt", "my description", 0));
-        wardrobe.addClothing(new Clothing(ClothingType.BOTTOMS, Color.red, "amy pants", "my pants description", 1));
 
         wp = new WardrobePanel(wardrobe, this);
         c.fill = GridBagConstraints.BOTH;
@@ -44,26 +42,25 @@ public class WardrobeFrame extends JFrame {
         sortClothingAlphabeticalButton();
         sortClothingWornButton();
         newClothingButton();
-
         clothingList();
+
         c.gridx = 3;
         c.gridy = 1;
         c.gridwidth = 1;
         add(wp, c);
         
-        
         pack();
         setVisible(true);
     }
 
+    // MODIFIES: wp
     // EFFECTS: Chooses the clothing selected on the list
     private void chooseClothingButton() {
-        JButton button = new JButton("Choose");
-        button.setActionCommand("choose");
+        JButton button = new JButton("View");
+        button.setActionCommand("view");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 wp.changeClothing(clothingList.getSelectedValue());
-                System.out.println(clothingList.getSelectedValue().getName());
 			}
         });
         c.gridx = 0;
@@ -71,10 +68,11 @@ public class WardrobeFrame extends JFrame {
         add(button, c);
     }
 
+    // MODIFIES: wardrobe, this
     // EFFECTS: Sorts clothing alphabetically
     private void sortClothingAlphabeticalButton() {
         JButton button = new JButton("Sort A -> Z");
-        button.setActionCommand("choose");
+        button.setActionCommand("sort");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 wardrobe.sortClothing(wardrobe.getClothing(), "alphabetical");
@@ -86,10 +84,11 @@ public class WardrobeFrame extends JFrame {
         add(button, c);
     }
 
+    // MODIFIES: wardrobe, this
     // EFFECTS: Sorts clothing by times worn
     private void sortClothingWornButton() {
         JButton button = new JButton("Sort Worn");
-        button.setActionCommand("choose");
+        button.setActionCommand("sort");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 wardrobe.sortClothing(wardrobe.getClothing(), "totalTimesWornAscending");
@@ -101,12 +100,14 @@ public class WardrobeFrame extends JFrame {
         add(button, c);
     }
 
+    // MODIFIES: this
     // EFFECTS: Turns display panel into adding new clothing panel
     private void newClothingButton() {
         JButton button = new JButton("New");
-        button.setActionCommand("choose");
+        button.setActionCommand("new");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                clothingList.clearSelection();
                 wp.addClothingPanel();
 			}
         });
@@ -115,8 +116,7 @@ public class WardrobeFrame extends JFrame {
         add(button, c);
     }
 
-    
-
+    // MODIFIES: this
     // EFFECTS: adds list of clothing to a JList and puts it on the frame
     private void clothingList() {
         clothingL = new DefaultListModel<>();
@@ -132,6 +132,7 @@ public class WardrobeFrame extends JFrame {
         
     }
 
+    // MODIFIES: this
     // EFFECTS: Updates the clothing list
     public void updateClothingList() {
         clothingL.clear();
