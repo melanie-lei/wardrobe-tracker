@@ -34,6 +34,7 @@ public class WardrobePanel extends JPanel {
     private JTextField nameField;
     private JTextField descField;
     private JComboBox<ClothingType> typeField;
+    private JColorChooser colourField;
 
     WardrobePanel(Wardrobe wd, WardrobeFrame wf) {
         super();
@@ -66,6 +67,8 @@ public class WardrobePanel extends JPanel {
         typeField.addItem(ClothingType.HEADWEAR);
         typeField.addItem(ClothingType.ACCESSORY);
         add(typeField);
+        colourField = new JColorChooser();
+        add(colourField);
         addClothingButton();
         revalidate();
     }
@@ -76,7 +79,7 @@ public class WardrobePanel extends JPanel {
         button.setActionCommand("add");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                wardrobe.addClothing(new Clothing((ClothingType) typeField.getSelectedItem(), Color.red, nameField.getText(), descField.getText(), 2));
+                wardrobe.addClothing(new Clothing((ClothingType) typeField.getSelectedItem(), colourField.getColor(), nameField.getText(), descField.getText(), 2));
                 wf.updateClothingList();
                 addClothingPanel();
 			}
