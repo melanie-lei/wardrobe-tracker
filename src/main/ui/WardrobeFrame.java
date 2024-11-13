@@ -38,18 +38,17 @@ public class WardrobeFrame extends JFrame {
         wardrobe.addClothing(new Clothing(ClothingType.TOP, Color.blue, "my shirt", "my description", 0));
         wardrobe.addClothing(new Clothing(ClothingType.BOTTOMS, Color.red, "amy pants", "my pants description", 1));
 
-        wp = new WardrobePanel(wardrobe);
+        wp = new WardrobePanel(wardrobe, this);
         c.fill = GridBagConstraints.BOTH;
         chooseClothingButton();
         sortClothingAlphabeticalButton();
         sortClothingWornButton();
         newClothingButton();
-        addClothingButton();
 
         clothingList();
         c.gridx = 3;
         c.gridy = 1;
-        c.gridwidth = 2;
+        c.gridwidth = 1;
         add(wp, c);
         
         
@@ -57,6 +56,7 @@ public class WardrobeFrame extends JFrame {
         setVisible(true);
     }
 
+    // EFFECTS: Chooses the clothing selected on the list
     private void chooseClothingButton() {
         JButton button = new JButton("Choose");
         button.setActionCommand("choose");
@@ -71,6 +71,7 @@ public class WardrobeFrame extends JFrame {
         add(button, c);
     }
 
+    // EFFECTS: Sorts clothing alphabetically
     private void sortClothingAlphabeticalButton() {
         JButton button = new JButton("Sort A -> Z");
         button.setActionCommand("choose");
@@ -85,6 +86,7 @@ public class WardrobeFrame extends JFrame {
         add(button, c);
     }
 
+    // EFFECTS: Sorts clothing by times worn
     private void sortClothingWornButton() {
         JButton button = new JButton("Sort Worn");
         button.setActionCommand("choose");
@@ -99,6 +101,7 @@ public class WardrobeFrame extends JFrame {
         add(button, c);
     }
 
+    // EFFECTS: Turns display panel into adding new clothing panel
     private void newClothingButton() {
         JButton button = new JButton("New");
         button.setActionCommand("choose");
@@ -112,19 +115,7 @@ public class WardrobeFrame extends JFrame {
         add(button, c);
     }
 
-    private void addClothingButton() {
-        JButton button = new JButton("Add");
-        button.setActionCommand("choose");
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                wardrobe.addClothing(new Clothing(ClothingType.BOTTOMS, Color.red, "my pants", "my pants description", 2));
-                updateClothingList();
-			}
-        });
-        c.gridx = 4;
-        c.gridy = 0;
-        add(button, c);
-    }
+    
 
     // EFFECTS: adds list of clothing to a JList and puts it on the frame
     private void clothingList() {
@@ -141,7 +132,8 @@ public class WardrobeFrame extends JFrame {
         
     }
 
-    private void updateClothingList() {
+    // EFFECTS: Updates the clothing list
+    public void updateClothingList() {
         clothingL.clear();
         for (Clothing c : wardrobe.getClothing()) {
             clothingL.addElement(c);
