@@ -40,6 +40,10 @@ public class WardrobePanel extends JPanel {
         currentClothing = c;
     }
 
+    public void addClothingPanel() {
+        isClothing = false;
+    }
+
      // EFFECTS: initializes the instances used for the wardrobe panel
     private void init() {
         isRunning = true;
