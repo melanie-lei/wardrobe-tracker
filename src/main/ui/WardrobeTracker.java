@@ -76,7 +76,7 @@ public class WardrobeTracker {
 
     // EFFECTS: reads the saved JSON data and loads it
     private void loadWardrobe() {
-        wardrobeSaver.loadWardrobe(this.wardrobe);
+        this.wardrobe = wardrobeSaver.loadWardrobe();
     }
 
     // EFFECTS: displays menu and retrieves user input

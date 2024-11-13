@@ -22,7 +22,6 @@ public class WardrobePanel extends JPanel {
     private Wardrobe wardrobe;
     private boolean isRunning;
     private int idTracker;
-    private WardrobeSaver wardrobeSaver;
     private boolean isViewClothing;
     private Clothing currentClothing;
     private WardrobeFrame wf;
@@ -122,7 +121,6 @@ public class WardrobePanel extends JPanel {
     private void init() {
         isRunning = true;
         idTracker = 0;
-        wardrobeSaver = new WardrobeSaver();
         isViewClothing = true;
     }
 
@@ -158,6 +156,11 @@ public class WardrobePanel extends JPanel {
             g.drawString(Integer.toString(currentClothing.getTimesWornSinceWash()), 90, 200);
         }
         
+    }
+
+    public void clear() {
+        removeAll();
+        currentClothing = null;
     }
 
 }

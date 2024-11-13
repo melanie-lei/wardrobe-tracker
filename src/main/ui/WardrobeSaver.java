@@ -12,7 +12,7 @@ public class WardrobeSaver {
 
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-    private static final String JSON_PATH = "./data/wardrobe.json";
+    private static final String JSON_PATH = "C:\\Users\\lei31\\CPSC 210\\Final Project\\project-k3k1a\\data\\wardrobe.json";
 
     // EFFECTS: creates an instance of WardrobeSaver with jsonWriter and jsonReader
     WardrobeSaver() {
@@ -33,12 +33,13 @@ public class WardrobeSaver {
     }
 
     // EFFECTS: reads the saved JSON data and loads it
-    public void loadWardrobe(Wardrobe wardrobe) {
+    public Wardrobe loadWardrobe() {
         try {
-            wardrobe = jsonReader.read();
             System.out.println("Loaded wardrobe from " + JSON_PATH);
+            return jsonReader.read();
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_PATH);
         }
+        return null;
     }
 }

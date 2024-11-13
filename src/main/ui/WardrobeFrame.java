@@ -20,6 +20,7 @@ public class WardrobeFrame extends JFrame {
 
     private Wardrobe wardrobe;
     private WardrobePanel wp;
+    private WardrobeSaver wardrobeSaver;
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 700;
 
@@ -35,22 +36,60 @@ public class WardrobeFrame extends JFrame {
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wardrobe = new Wardrobe();
+        wardrobeSaver = new WardrobeSaver();
 
         wp = new WardrobePanel(wardrobe, this);
+        addComponents();
+        
+        pack();
+        setVisible(true);
+    }
+
+    private void addComponents() {
         c.fill = GridBagConstraints.BOTH;
         chooseClothingButton();
         sortClothingAlphabeticalButton();
         sortClothingWornButton();
         newClothingButton();
+        loadFileButton();
+        saveFileButton();
         clothingList();
 
         c.gridx = 3;
         c.gridy = 1;
-        c.gridwidth = 1;
+        c.gridwidth = 3;
         add(wp, c);
-        
-        pack();
-        setVisible(true);
+    }
+
+    private void saveFileButton() {
+        JButton button = new JButton("Save File");
+        button.setActionCommand("save");
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                wardrobeSaver.saveWardrobe(wardrobe);
+			}
+        });
+        c.ipadx = 60;
+        c.gridx = 4;
+        c.gridy = 0;
+        add(button, c);
+    }
+
+    private void loadFileButton() {
+        JButton button = new JButton("Load File");
+        button.setActionCommand("load");
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                wardrobe = wardrobeSaver.loadWardrobe();
+                updateClothingList();
+                clothingList.clearSelection();
+                wp.clear();
+			}
+        });
+        c.ipadx = 60;
+        c.gridx = 5;
+        c.gridy = 0;
+        add(button, c);
     }
 
     // MODIFIES: wp
@@ -111,6 +150,7 @@ public class WardrobeFrame extends JFrame {
                 wp.addClothingPanel();
 			}
         });
+        c.ipadx = 700;
         c.gridx = 3;
         c.gridy = 0;
         add(button, c);
