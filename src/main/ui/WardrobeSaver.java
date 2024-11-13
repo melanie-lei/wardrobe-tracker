@@ -12,7 +12,7 @@ public class WardrobeSaver {
 
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-    private static final String JSON_PATH = "C:\\Users\\lei31\\CPSC 210\\Final Project\\project-k3k1a\\data\\wardrobe.json";
+    private static final String JSON_PATH = "./data/wardrobe.json";
 
     // EFFECTS: creates an instance of WardrobeSaver with jsonWriter and jsonReader
     WardrobeSaver() {

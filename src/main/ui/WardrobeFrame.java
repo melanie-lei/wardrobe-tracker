@@ -1,9 +1,6 @@
 package ui;
 
 
-import java.util.List;
-import java.util.Vector;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,8 +9,6 @@ import java.awt.event.ActionListener;
 
 
 import model.Clothing;
-import model.Clothing.ClothingType;
-import model.Outfit;
 import model.Wardrobe;
 
 public class WardrobeFrame extends JFrame {
@@ -45,6 +40,7 @@ public class WardrobeFrame extends JFrame {
         setVisible(true);
     }
 
+    // EFFECTS: Adds the JComponents to the frame
     private void addComponents() {
         c.fill = GridBagConstraints.BOTH;
         chooseClothingButton();
@@ -61,6 +57,8 @@ public class WardrobeFrame extends JFrame {
         add(wp, c);
     }
 
+    // MODIFIES: wardrobe.json
+    // EFFECTS: Creates and adds a save file button
     private void saveFileButton() {
         JButton button = new JButton("Save File");
         button.setActionCommand("save");
@@ -75,6 +73,8 @@ public class WardrobeFrame extends JFrame {
         add(button, c);
     }
 
+    // MODIFIES: wardrobe
+    // EFFECTS: Creates and adds a load file button
     private void loadFileButton() {
         JButton button = new JButton("Load File");
         button.setActionCommand("load");

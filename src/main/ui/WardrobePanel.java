@@ -1,11 +1,12 @@
 package ui;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-
 import java.awt.*;
 import javax.swing.*;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.imageio.ImageIO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +21,6 @@ public class WardrobePanel extends JPanel {
     private static final int HEIGHT = 700;
 
     private Wardrobe wardrobe;
-    private boolean isRunning;
     private int idTracker;
     private boolean isViewClothing;
     private Clothing currentClothing;
@@ -35,7 +35,7 @@ public class WardrobePanel extends JPanel {
         super();
         init();
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		setBackground(Color.white);
+        setBackground(Color.white);
         this.wardrobe = wd;
         this.wf = wf;
     }
@@ -80,10 +80,11 @@ public class WardrobePanel extends JPanel {
         button.setActionCommand("add");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                wardrobe.addClothing(new Clothing((ClothingType) typeField.getSelectedItem(), colourField.getColor(), nameField.getText(), descField.getText(), idTracker++));
+                wardrobe.addClothing(new Clothing((ClothingType) typeField.getSelectedItem(), colourField.getColor(),
+                        nameField.getText(), descField.getText(), idTracker++));
                 wf.updateClothingList();
                 addClothingPanel();
-			}
+            }
         });
 
         add(button);
@@ -97,7 +98,7 @@ public class WardrobePanel extends JPanel {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 currentClothing.wear();
-			}
+            }
         });
 
         add(button);
@@ -111,7 +112,7 @@ public class WardrobePanel extends JPanel {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 currentClothing.wash();
-			}
+            }
         });
 
         add(button);
@@ -119,25 +120,24 @@ public class WardrobePanel extends JPanel {
 
     // EFFECTS: initializes the instances used for the wardrobe panel
     private void init() {
-        isRunning = true;
         idTracker = 0;
         isViewClothing = true;
     }
 
     // EFFECTS: Paints the panel
     @Override
-	protected void paintComponent(Graphics g) { 
-		super.paintComponent(g);
-		
-		drawWardrobe(g);
-		repaint();
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
 
-	}
+        drawWardrobe(g);
+        repaint();
+
+    }
 
     // MODIFIES: this
     // EFFECTS: Draws wardrobe menu
     private void drawWardrobe(Graphics g) {
-        if (isViewClothing) { 
+        if (isViewClothing) {
             drawSingleClothing(g);
         }
     }
@@ -152,12 +152,45 @@ public class WardrobePanel extends JPanel {
             g.drawString(currentClothing.getName(), 100, 20);
             g.drawString(currentClothing.getDescription(), 200, 20);
             g.drawString(currentClothing.getClothingType().toString(), 20, 200);
+            drawType(g, currentClothing.getClothingType());
+
             g.drawString(Integer.toString(currentClothing.getTotalTimesWorn()), 60, 200);
             g.drawString(Integer.toString(currentClothing.getTimesWornSinceWash()), 90, 200);
         }
-        
+
     }
 
+    private void drawType(Graphics g, ClothingType clothingType) {
+        BufferedImage myPicture;
+        try {
+            switch (clothingType) {
+                case TOP:
+                    myPicture = ImageIO.read(new File("./src/main/ui/imgs/top.jpg"));
+                    break;
+                case BOTTOMS:
+                    myPicture = ImageIO.read(new File("./src/main/ui/imgs/bottoms.jpg"));
+                    break;
+                case JACKET:
+                    myPicture = ImageIO.read(new File("./src/main/ui/imgs/jacket.jpg"));
+                    break;
+                case SHOES:
+                    myPicture = ImageIO.read(new File("./src/main/ui/imgs/shoes.jpg"));
+                    break;
+                case HEADWEAR:
+                    myPicture = ImageIO.read(new File("./src/main/ui/imgs/headwear.jpg"));
+                    break;
+                default:
+                    myPicture = ImageIO.read(new File("./src/main/ui/imgs/accessory.jpg"));
+                    break;
+            }
+            g.drawImage(myPicture, 100, 100, null);
+        } catch (Exception e) {
+            System.err.println("IOException");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Clear the panel
     public void clear() {
         removeAll();
         currentClothing = null;
