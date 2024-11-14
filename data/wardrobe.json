@@ -1,13 +1,4 @@
 {
-    "clothing": [{
-        "colour": -6710785,
-        "timesWornSinceWash": 0,
-        "name": "NEW",
-        "description": "Description",
-        "totalTimesWorn": 2,
-        "id": 0,
-        "type": "TOP",
-        "isFavourite": false
-    }],
+    "clothing": [],
     "outfits": []
 }

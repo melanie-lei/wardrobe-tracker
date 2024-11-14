@@ -1,12 +1,10 @@
 package ui;
 
-
 import javax.swing.*;
 import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 
 import model.Clothing;
 import model.Wardrobe;
@@ -21,13 +19,13 @@ public class WardrobeFrame extends JFrame {
 
     private DefaultListModel<Clothing> clothingL;
     private JList<Clothing> clothingList;
-    private GridBagConstraints c;
+    private GridBagConstraints constraints;
 
     // EFFECTS: Creates an instance of WardrobeFrame and instantiates displays
     WardrobeFrame() {
         super("Wardrobe");
         setLayout(new GridBagLayout());
-        c = new GridBagConstraints();
+        constraints = new GridBagConstraints();
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wardrobe = new Wardrobe();
@@ -35,14 +33,14 @@ public class WardrobeFrame extends JFrame {
 
         wp = new WardrobePanel(wardrobe, this);
         addComponents();
-        
+
         pack();
         setVisible(true);
     }
 
     // EFFECTS: Adds the JComponents to the frame
     private void addComponents() {
-        c.fill = GridBagConstraints.BOTH;
+        constraints.fill = GridBagConstraints.BOTH;
         chooseClothingButton();
         sortClothingAlphabeticalButton();
         sortClothingWornButton();
@@ -51,10 +49,10 @@ public class WardrobeFrame extends JFrame {
         saveFileButton();
         clothingList();
 
-        c.gridx = 3;
-        c.gridy = 1;
-        c.gridwidth = 3;
-        add(wp, c);
+        constraints.gridx = 3;
+        constraints.gridy = 1;
+        constraints.gridwidth = 3;
+        add(wp, constraints);
     }
 
     // MODIFIES: wardrobe.json
@@ -65,12 +63,12 @@ public class WardrobeFrame extends JFrame {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 wardrobeSaver.saveWardrobe(wardrobe);
-			}
+            }
         });
-        c.ipadx = 60;
-        c.gridx = 4;
-        c.gridy = 0;
-        add(button, c);
+        constraints.ipadx = 60;
+        constraints.gridx = 4;
+        constraints.gridy = 0;
+        add(button, constraints);
     }
 
     // MODIFIES: wardrobe
@@ -81,15 +79,16 @@ public class WardrobeFrame extends JFrame {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 wardrobe = wardrobeSaver.loadWardrobe();
+                wp.updateWardrobe(wardrobe);
                 updateClothingList();
                 clothingList.clearSelection();
                 wp.clear();
-			}
+            }
         });
-        c.ipadx = 60;
-        c.gridx = 5;
-        c.gridy = 0;
-        add(button, c);
+        constraints.ipadx = 60;
+        constraints.gridx = 5;
+        constraints.gridy = 0;
+        add(button, constraints);
     }
 
     // MODIFIES: wp
@@ -100,11 +99,11 @@ public class WardrobeFrame extends JFrame {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 wp.changeClothing(clothingList.getSelectedValue());
-			}
+            }
         });
-        c.gridx = 0;
-        c.gridy = 0;
-        add(button, c);
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        add(button, constraints);
     }
 
     // MODIFIES: wardrobe, this
@@ -116,11 +115,11 @@ public class WardrobeFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 wardrobe.sortClothing(wardrobe.getClothing(), "alphabetical");
                 updateClothingList();
-			}
+            }
         });
-        c.gridx = 1;
-        c.gridy = 0;
-        add(button, c);
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        add(button, constraints);
     }
 
     // MODIFIES: wardrobe, this
@@ -132,11 +131,11 @@ public class WardrobeFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 wardrobe.sortClothing(wardrobe.getClothing(), "totalTimesWornAscending");
                 updateClothingList();
-			}
+            }
         });
-        c.gridx = 2;
-        c.gridy = 0;
-        add(button, c);
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        add(button, constraints);
     }
 
     // MODIFIES: this
@@ -148,12 +147,12 @@ public class WardrobeFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 clothingList.clearSelection();
                 wp.addClothingPanel();
-			}
+            }
         });
-        c.ipadx = 700;
-        c.gridx = 3;
-        c.gridy = 0;
-        add(button, c);
+        constraints.ipadx = 700;
+        constraints.gridx = 3;
+        constraints.gridy = 0;
+        add(button, constraints);
     }
 
     // MODIFIES: this
@@ -164,12 +163,12 @@ public class WardrobeFrame extends JFrame {
         clothingList = new JList<>(clothingL);
         clothingList.setVisibleRowCount(10);
         clothingList.setCellRenderer(new ClothingListCellRenderer());
-        c.ipadx = 20;
-        c.gridx = 0;
-        c.gridy = 1;
-        c.gridwidth = 3;
-        add(new JScrollPane(clothingList), c);
-        
+        constraints.ipadx = 20;
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.gridwidth = 3;
+        add(new JScrollPane(clothingList), constraints);
+
     }
 
     // MODIFIES: this

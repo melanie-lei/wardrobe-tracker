@@ -29,11 +29,14 @@ public class WardrobePanel extends JPanel {
     private JTextField descField;
     private JComboBox<ClothingType> typeField;
     private JColorChooser colourField;
+    private GridBagConstraints constraints;
 
     // EFFECTS: Creates a wardrobe panel with an assigned wardrobe and frame
     WardrobePanel(Wardrobe wd, WardrobeFrame wf) {
         super();
         init();
+        setLayout(new GridBagLayout());
+        constraints = new GridBagConstraints();
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBackground(Color.white);
         this.wardrobe = wd;
@@ -55,10 +58,28 @@ public class WardrobePanel extends JPanel {
     public void addClothingPanel() {
         isViewClothing = false;
         removeAll();
-        nameField = new JTextField("Name");
-        descField = new JTextField("Description");
-        add(nameField);
-        add(descField);
+        constraints = new GridBagConstraints();
+        constraints.insets = new Insets(10, 10, 10, 10);
+
+        addNameField();
+        addDescriptionField();
+        addTypeField();
+        addColourField();
+        addClothingButton();
+        revalidate();
+    }
+
+    // EFFECTS: Changes layout constraints and adds a colourField
+    private void addColourField() {
+        colourField = new JColorChooser();
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.gridwidth = 3;
+        add(colourField, constraints);
+    }
+
+    // EFFECTS: Changes layout constraints and adds a typeField
+    private void addTypeField() {
         typeField = new JComboBox<>();
         typeField.addItem(ClothingType.TOP);
         typeField.addItem(ClothingType.BOTTOMS);
@@ -66,11 +87,26 @@ public class WardrobePanel extends JPanel {
         typeField.addItem(ClothingType.SHOES);
         typeField.addItem(ClothingType.HEADWEAR);
         typeField.addItem(ClothingType.ACCESSORY);
-        add(typeField);
-        colourField = new JColorChooser();
-        add(colourField);
-        addClothingButton();
-        revalidate();
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        add(typeField, constraints);
+    }
+
+    // EFFECTS: Changes layout constraints and adds a descField
+    private void addDescriptionField() {
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        descField = new JTextField("Description");
+        add(descField, constraints);
+    }
+
+    // EFFECTS: Changes layout constraints and adds a nameField
+    private void addNameField() {
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.ipadx = 80;
+        nameField = new JTextField("Name");
+        add(nameField, constraints);
     }
 
     // MODIFIES: currentClothing
@@ -86,8 +122,9 @@ public class WardrobePanel extends JPanel {
                 addClothingPanel();
             }
         });
-
-        add(button);
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        add(button, constraints);
     }
 
     // MODIFIES: currentClothing
@@ -118,7 +155,7 @@ public class WardrobePanel extends JPanel {
         add(button);
     }
 
-    // EFFECTS: initializes the instances used for the wardrobe panel
+    // EFFECTS: Initializes the instances used for the wardrobe panel
     private void init() {
         idTracker = 0;
         isViewClothing = true;
@@ -147,21 +184,22 @@ public class WardrobePanel extends JPanel {
     private void drawSingleClothing(Graphics g) {
         if (currentClothing != null) {
             g.setColor(currentClothing.getColour());
-            g.fillRect(10, 20, 50, 50);
+            g.fillRect(400, 20, 200, 30);
             g.setColor(Color.BLACK);
-            g.drawString(currentClothing.getName(), 100, 20);
-            g.drawString(currentClothing.getDescription(), 200, 20);
-            g.drawString(currentClothing.getClothingType().toString(), 20, 200);
+            g.drawString("Name: " + currentClothing.getName(), 20, 20);
+            g.drawString("Description: " + currentClothing.getDescription(), 20, 40);
             drawType(g, currentClothing.getClothingType());
-
-            g.drawString(Integer.toString(currentClothing.getTotalTimesWorn()), 60, 200);
-            g.drawString(Integer.toString(currentClothing.getTimesWornSinceWash()), 90, 200);
+            g.drawString("Total Times Worn: " + Integer.toString(currentClothing.getTotalTimesWorn()), 20, 80);
+            g.drawString("Times Worn Since Wash: " + Integer.toString(currentClothing.getTimesWornSinceWash()), 20,
+                    100);
         }
 
     }
 
+    // EFFECTS: Draws the image based on clothing type
+    @SuppressWarnings("methodlength")
     private void drawType(Graphics g, ClothingType clothingType) {
-        BufferedImage myPicture;
+        BufferedImage myPicture = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
         try {
             switch (clothingType) {
                 case TOP:
@@ -183,7 +221,7 @@ public class WardrobePanel extends JPanel {
                     myPicture = ImageIO.read(new File("./src/main/ui/imgs/accessory.jpg"));
                     break;
             }
-            g.drawImage(myPicture, 100, 100, null);
+            g.drawImage(myPicture, 400, 80, 200, 180, null);
         } catch (Exception e) {
             System.err.println("IOException");
         }
@@ -194,6 +232,10 @@ public class WardrobePanel extends JPanel {
     public void clear() {
         removeAll();
         currentClothing = null;
+    }
+
+    public void updateWardrobe(Wardrobe wardrobe) {
+        this.wardrobe = wardrobe;
     }
 
 }
