@@ -125,11 +125,11 @@ public class WardrobeFrame extends JFrame {
     // MODIFIES: wardrobe, this
     // EFFECTS: Sorts clothing by times worn
     private void sortClothingWornButton() {
-        JButton button = new JButton("Sort Worn");
+        JButton button = new JButton("Sort Worn Most");
         button.setActionCommand("sort");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                wardrobe.sortClothing(wardrobe.getClothing(), "totalTimesWornAscending");
+                wardrobe.sortClothing(wardrobe.getClothing(), "totalTimesWornDescending");
                 updateClothingList();
             }
         });

@@ -41,7 +41,7 @@ public class Wardrobe implements Writable {
     public void sortClothing(List<Clothing> list, String category) {
         switch (category) {
             case "alphabetical":
-                list.sort((o1, o2) -> o1.getName().compareTo(o2.getName()));
+                list.sort((o1, o2) -> o1.getName().toLowerCase().compareTo(o2.getName().toLowerCase()));
                 break;
             case "totalTimesWornAscending":
                 list.sort((o1, o2) -> o1.getTotalTimesWorn() - o2.getTotalTimesWorn());
