@@ -24,10 +24,19 @@ Each individual item keeps track of:
 
 - As a user, I want to be able to add a clothing item to my wardrobe (list of clothing items)
 - As a user, I want to be able to select clothing items to create an outfit
-- As a user, I want to be able to save an outfit with the date worn
+- As a user, I want to be able to save an outfit
 - As a user, I want to be able to see a history of past outfits worn
 - As a user, I want to be able to indicate when I wash an item of clothing
 - As a user, I want to be able to view info on an item of clothing, eg. total times worn, times worn since last wash
 - As a user, I want to be able to sort my clothing items based on its properties
 - As a user, I want to be able to save my outfits and clothing items to file (if I so choose)
 - As a user, I want to be able to be able to load my outfits and clothing items from file (if I so choose)
+
+# Instructions for End User
+
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by selecting 'New', specifying details for the clothing item, and hitting 'Add'
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by selecting 'Sort A -> Z' or 'Sort Worn'
+- You can locate my visual component by selecting a clothing item and hitting 'View'
+- You can save the state of my application by selecting 'Save File'
+- You can reload the state of my application by selecting 'Load File'
+
