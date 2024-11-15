@@ -20,7 +20,7 @@ public class WardrobeSaver {
         jsonReader = new JsonReader(JSON_PATH);
     }
 
-     // EFFECTS: writes the wardrobe into JSON data and saves it
+    // EFFECTS: writes the wardrobe into JSON data and saves it
     public void saveWardrobe(Wardrobe wardrobe) {
         try {
             jsonWriter.open();

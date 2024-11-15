@@ -234,6 +234,8 @@ public class WardrobePanel extends JPanel {
         currentClothing = null;
     }
 
+    // MODIFIES: this
+    // EFFECTS: Changes the current wardrobe to a new one
     public void updateWardrobe(Wardrobe wardrobe) {
         this.wardrobe = wardrobe;
     }
