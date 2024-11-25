@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import model.Clothing.ClothingType;
 
+// Tests for Clothing
 public class ClothingTest {
 
     private Clothing clothing;

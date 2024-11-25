@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import model.Clothing.ClothingType;
 import java.awt.Color;
 
-// console based UI
+// Tests for Wardrobe
 public class WardrobeTest {
     Wardrobe wardrobe;
     Outfit outfit;

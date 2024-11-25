@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import model.Clothing.ClothingType;
 
+// Tests for Outfit
 public class OutfitTest {
 
     Outfit outfit;
