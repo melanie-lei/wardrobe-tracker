@@ -39,6 +39,7 @@ public class Wardrobe implements Writable {
     // MODIFIES: list
     // EFFECTS: sorts the given list based on the given category
     public void sortClothing(List<Clothing> list, String category) {
+        EventLog.getInstance().logEvent(new Event("Sorted clothing by " + category + "."));
         switch (category) {
             case "alphabetical":
                 list.sort((o1, o2) -> o1.getName().toLowerCase().compareTo(o2.getName().toLowerCase()));
@@ -62,7 +63,8 @@ public class Wardrobe implements Writable {
         }
     }
 
-    // EFFECTS: returns -1 if a is fav and b isnt, 1 if b is fav and a isnt, and 0 if they are same value
+    // EFFECTS: returns -1 if a is fav and b isnt, 1 if b is fav and a isnt, and 0
+    // if they are same value
     private int favouriteSort(boolean a, boolean b) {
         if (a && !b) {
             return -1;
@@ -76,12 +78,14 @@ public class Wardrobe implements Writable {
     // MODFIES: this
     // EFFECTS: adds an outfit to list of outfits
     public void addOutfit(Outfit o) {
+        EventLog.getInstance().logEvent(new Event("Added an outfit to wardrobe."));
         this.outfits.add(o);
     }
 
     // MODFIES: this
     // EFFECTS: adds a clothing to list of clothing
     public void addClothing(Clothing c) {
+        EventLog.getInstance().logEvent(new Event("Added " + c.getClothingType().toString() + " to wardrobe."));
         this.clothing.add(c);
         switch (c.getClothingType()) {
             case TOP:

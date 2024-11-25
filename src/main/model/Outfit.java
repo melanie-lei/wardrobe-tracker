@@ -28,6 +28,7 @@ public class Outfit implements Writable {
     // Modifies: this
     // Effects: wears all clothing in the outfits
     public Outfit saveOutfit() {
+        EventLog.getInstance().logEvent(new Event("Outfit saved."));
         this.top.wear();
         this.jacket.wear();
         this.bottoms.wear();
