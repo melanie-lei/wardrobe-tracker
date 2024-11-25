@@ -5,8 +5,12 @@ import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import model.Clothing;
+import model.EventLog;
 import model.Wardrobe;
 
 public class WardrobeFrame extends JFrame {
@@ -28,6 +32,7 @@ public class WardrobeFrame extends JFrame {
         constraints = new GridBagConstraints();
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addWindowListener(new MyWindowListener());
         wardrobe = new Wardrobe();
         wardrobeSaver = new WardrobeSaver();
 
@@ -179,5 +184,16 @@ public class WardrobeFrame extends JFrame {
             clothingL.addElement(c);
         }
     }
+
+    // EFFECTS: Window listener for when the window closes
+    private class MyWindowListener extends WindowAdapter {
+        public void windowClosing(WindowEvent e) {
+            EventLog el = EventLog.getInstance();
+            for (model.Event ev : el) {
+                System.out.println(ev.toString());
+            }
+        }
+    }
+
 
 }
