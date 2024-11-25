@@ -40,3 +40,12 @@ Each individual item keeps track of:
 - You can save the state of my application by selecting 'Save File'
 - You can reload the state of my application by selecting 'Load File'
 
+## Phase 4: Task 2
+Mon Nov 25 10:11:13 PST 2024
+Added TOP to wardrobe.
+Mon Nov 25 10:11:15 PST 2024
+Added BOTTOMS to wardrobe.
+Mon Nov 25 10:11:16 PST 2024
+Sorted clothing by alphabetical.
+Mon Nov 25 10:11:17 PST 2024
+Sorted clothing by totalTimesWornDescending.
