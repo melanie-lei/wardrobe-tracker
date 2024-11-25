@@ -49,3 +49,6 @@ Each individual item keeps track of:
 - Sorted clothing by alphabetical.
 - Mon Nov 25 10:11:17 PST 2024
 - Sorted clothing by totalTimesWornDescending.
+
+## Phase 4: Task 3
+If I had more time for this project, I would refactor Clothing into an abstract class called Wearable and have the different Clothing Types (Top, Jacket, etc.) extends the Wearable class. Outfits will consist of a collection of Wearables. This will allow more flexibility in the future to build different Outfits and also implement different functionality in the Clothing pieces. For example, right now, accessories do not count times worn since last wash using a conditional block. If the different Clothing items all extended Wearable, I could override the wear() method and not increment times worn since last wash. 
