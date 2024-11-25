@@ -188,9 +188,9 @@ public class WardrobeFrame extends JFrame {
     // EFFECTS: Window listener for when the window closes
     private class MyWindowListener extends WindowAdapter {
         public void windowClosing(WindowEvent e) {
-            EventLog el = EventLog.getInstance();
-            for (model.Event ev : el) {
-                System.out.println(ev.toString());
+            EventLog eventLog = EventLog.getInstance();
+            for (model.Event event : eventLog) {
+                System.out.println(event.toString());
             }
         }
     }
