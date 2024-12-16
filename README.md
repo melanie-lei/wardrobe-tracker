@@ -1,4 +1,4 @@
-# Fit Tracker
+# Fit Tracker: Final Project for UBC CPSC210
 
 ## Summary
 
